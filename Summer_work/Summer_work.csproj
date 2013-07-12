@@ -62,8 +62,7 @@
     <EmbeddedResource Include="gtk-gui\gui.stetic">
       <LogicalName>gui.stetic</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="..\..\..\..\Изображения\Scaned\Отсканированный документ-10.jpg" />
-    <EmbeddedResource Include="..\..\..\..\Изображения\Scaned\Отсканированный документ-4.jpg" />
+    <EmbeddedResource Include="..\болт.svg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />

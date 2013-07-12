@@ -78,7 +78,7 @@
                         <property name="MemberName" />
                         <property name="WidthRequest">300</property>
                         <property name="HeightRequest">175</property>
-                        <property name="Pixbuf">resource:Summer_work.Отсканированный документ-4.jpg</property>
+                        <property name="Pixbuf">resource:Summer_work.болт.svg</property>
                       </widget>
                       <packing>
                         <property name="Position">0</property>

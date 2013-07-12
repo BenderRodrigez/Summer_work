@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Summer_work/MainWindow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Summer_work/Main.cs">
     <Files>
       <File FileName="Summer_work/Main.cs" Line="1" Column="1" />
       <File FileName="Summer_work/MainWindow.cs" Line="19" Column="34" />
