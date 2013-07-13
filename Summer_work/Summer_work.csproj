@@ -63,6 +63,9 @@
       <LogicalName>gui.stetic</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="..\болт.svg" />
+    <EmbeddedResource Include="..\болт_расстояние.svg" />
+    <EmbeddedResource Include="..\walls.svg" />
+    <EmbeddedResource Include="..\found.svg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />
