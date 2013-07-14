@@ -66,6 +66,8 @@
     <EmbeddedResource Include="..\болт_расстояние.svg" />
     <EmbeddedResource Include="..\walls.svg" />
     <EmbeddedResource Include="..\found.svg" />
+    <EmbeddedResource Include="..\roof1sc.svg" />
+    <EmbeddedResource Include="..\roof2sc.svg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />
