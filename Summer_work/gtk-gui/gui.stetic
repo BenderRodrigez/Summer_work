@@ -67,7 +67,7 @@
           <widget class="Gtk.Notebook" id="notebook1">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
-            <property name="CurrentPage">2</property>
+            <property name="CurrentPage">0</property>
             <child>
               <widget class="Gtk.HBox" id="hbox1">
                 <property name="MemberName" />
@@ -353,11 +353,11 @@
                               <widget class="Gtk.SpinButton" id="spinbutton12">
                                 <property name="MemberName" />
                                 <property name="CanFocus">True</property>
-                                <property name="Lower">1</property>
+                                <property name="Lower">0.1</property>
                                 <property name="Upper">150</property>
                                 <property name="PageIncrement">10</property>
-                                <property name="StepIncrement">1</property>
-                                <property name="ClimbRate">1</property>
+                                <property name="StepIncrement">0.1</property>
+                                <property name="ClimbRate">0.1</property>
                                 <property name="Numeric">True</property>
                                 <property name="Value">1</property>
                               </widget>
@@ -496,9 +496,54 @@
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
                             <child>
-                              <widget class="Gtk.Label" id="label27">
+                              <widget class="Gtk.HBox" id="hbox7">
                                 <property name="MemberName" />
-                                <property name="LabelProp" translatable="yes">Название: </property>
+                                <property name="Spacing">6</property>
+                                <child>
+                                  <widget class="Gtk.Button" id="button1">
+                                    <property name="MemberName" />
+                                    <property name="CanFocus">True</property>
+                                    <property name="UseStock">True</property>
+                                    <property name="Type">StockItem</property>
+                                    <property name="StockId">gtk-go-back</property>
+                                    <property name="label">gtk-go-back</property>
+                                  </widget>
+                                  <packing>
+                                    <property name="Position">0</property>
+                                    <property name="AutoSize">True</property>
+                                    <property name="Expand">False</property>
+                                    <property name="Fill">False</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <widget class="Gtk.Label" id="label27">
+                                    <property name="MemberName" />
+                                    <property name="LabelProp" translatable="yes">Название: </property>
+                                  </widget>
+                                  <packing>
+                                    <property name="Position">1</property>
+                                    <property name="AutoSize">True</property>
+                                    <property name="Expand">False</property>
+                                    <property name="Fill">False</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <widget class="Gtk.Button" id="button2">
+                                    <property name="MemberName" />
+                                    <property name="CanFocus">True</property>
+                                    <property name="UseStock">True</property>
+                                    <property name="Type">StockItem</property>
+                                    <property name="StockId">gtk-go-forward</property>
+                                    <property name="label">gtk-go-forward</property>
+                                  </widget>
+                                  <packing>
+                                    <property name="PackType">End</property>
+                                    <property name="Position">2</property>
+                                    <property name="AutoSize">True</property>
+                                    <property name="Expand">False</property>
+                                    <property name="Fill">False</property>
+                                  </packing>
+                                </child>
                               </widget>
                               <packing>
                                 <property name="Position">0</property>
@@ -1209,7 +1254,7 @@
                           </widget>
                         </child>
                         <child>
-                          <widget class="Gtk.Label" id="GtkLabel1">
+                          <widget class="Gtk.Label" id="GtkLabel3">
                             <property name="MemberName" />
                             <property name="LabelProp" translatable="yes">Параметры фундамента:</property>
                             <property name="UseMarkup">True</property>
@@ -1485,7 +1530,7 @@
                       </widget>
                     </child>
                     <child>
-                      <widget class="Gtk.Label" id="GtkLabel3">
+                      <widget class="Gtk.Label" id="GtkLabel4">
                         <property name="MemberName" />
                         <property name="LabelProp" translatable="yes">Результат:</property>
                         <property name="UseMarkup">True</property>
@@ -2169,7 +2214,7 @@
                       </widget>
                     </child>
                     <child>
-                      <widget class="Gtk.Label" id="GtkLabel4">
+                      <widget class="Gtk.Label" id="GtkLabel5">
                         <property name="MemberName" />
                         <property name="LabelProp" translatable="yes">Результат:</property>
                         <property name="UseMarkup">True</property>
