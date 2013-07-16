@@ -171,7 +171,7 @@ public partial class MainWindow
 		this.notebook1 = new global::Gtk.Notebook ();
 		this.notebook1.CanFocus = true;
 		this.notebook1.Name = "notebook1";
-		this.notebook1.CurrentPage = 0;
+		this.notebook1.CurrentPage = 2;
 		// Container child notebook1.Gtk.Notebook+NotebookChild
 		this.hbox1 = new global::Gtk.HBox ();
 		this.hbox1.Name = "hbox1";
@@ -185,7 +185,7 @@ public partial class MainWindow
 		this.image1.WidthRequest = 300;
 		this.image1.HeightRequest = 175;
 		this.image1.Name = "image1";
-		this.image1.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("Summer_work.болт.svg");
+		this.image1.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("Summer_work.Imgs.Graph.bolt_sizes.png");
 		this.vbox1.Add (this.image1);
 		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.image1]));
 		w3.Position = 0;
@@ -196,7 +196,7 @@ public partial class MainWindow
 		this.image2.WidthRequest = 300;
 		this.image2.HeightRequest = 175;
 		this.image2.Name = "image2";
-		this.image2.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("Summer_work.болт_расстояние.svg");
+		this.image2.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("Summer_work.Imgs.Graph.bolt_distance.png");
 		this.vbox1.Add (this.image2);
 		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.image2]));
 		w4.Position = 1;
@@ -696,7 +696,7 @@ public partial class MainWindow
 		this.image3.WidthRequest = 450;
 		this.image3.HeightRequest = 320;
 		this.image3.Name = "image3";
-		this.image3.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("Summer_work.found.svg");
+		this.image3.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("Summer_work.Imgs.Graph.found.png");
 		this.vbox5.Add (this.image3);
 		global::Gtk.Box.BoxChild w46 = ((global::Gtk.Box.BoxChild)(this.vbox5 [this.image3]));
 		w46.Position = 0;
@@ -1066,7 +1066,7 @@ public partial class MainWindow
 		this.image4.WidthRequest = 250;
 		this.image4.HeightRequest = 250;
 		this.image4.Name = "image4";
-		this.image4.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("Summer_work.walls.svg");
+		this.image4.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("Summer_work.Imgs.Graph.walls.png");
 		this.hbox5.Add (this.image4);
 		global::Gtk.Box.BoxChild w77 = ((global::Gtk.Box.BoxChild)(this.hbox5 [this.image4]));
 		w77.Position = 0;
@@ -1274,7 +1274,7 @@ public partial class MainWindow
 		this.roofImg.WidthRequest = 250;
 		this.roofImg.HeightRequest = 250;
 		this.roofImg.Name = "roofImg";
-		this.roofImg.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("Summer_work.roof2sc.svg");
+		this.roofImg.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("Summer_work.Imgs.Graph.roof2sc.png");
 		this.hbox6.Add (this.roofImg);
 		global::Gtk.Box.BoxChild w94 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.roofImg]));
 		w94.Position = 0;
@@ -1328,11 +1328,11 @@ public partial class MainWindow
 		w98.XOptions = ((global::Gtk.AttachOptions)(4));
 		w98.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table5.Gtk.Table+TableChild
-		this.minh = new global::Gtk.SpinButton (0, 100, 1);
+		this.minh = new global::Gtk.SpinButton (0, 100, 0.1);
 		this.minh.CanFocus = true;
 		this.minh.Name = "minh";
 		this.minh.Adjustment.PageIncrement = 10;
-		this.minh.ClimbRate = 1;
+		this.minh.ClimbRate = 0.1;
 		this.minh.Numeric = true;
 		this.table5.Add (this.minh);
 		global::Gtk.Table.TableChild w99 = ((global::Gtk.Table.TableChild)(this.table5 [this.minh]));

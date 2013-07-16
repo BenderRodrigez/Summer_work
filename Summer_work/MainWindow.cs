@@ -23,8 +23,8 @@ public partial class MainWindow: Gtk.Window
    		Stream _imageStream;
 		Stream _imageStream2;
 		_assembly = Assembly.GetExecutingAssembly();
-		_imageStream = _assembly.GetManifestResourceStream("Summer_work.roof1sc.svg");
-		_imageStream2 = _assembly.GetManifestResourceStream("Summer_work.roof2sc.svg");
+		_imageStream = _assembly.GetManifestResourceStream("Summer_work.Imgs.Graph.roof1sc.png");
+		_imageStream2 = _assembly.GetManifestResourceStream("Summer_work.Imgs.Graph.roof2sc.png");
 		switch (combobox2.ActiveText)
 		{
 		case "Односкатная": roofImg.Pixbuf = new Gdk.Pixbuf(_imageStream);

@@ -62,12 +62,12 @@
     <EmbeddedResource Include="gtk-gui\gui.stetic">
       <LogicalName>gui.stetic</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="..\болт.svg" />
-    <EmbeddedResource Include="..\болт_расстояние.svg" />
-    <EmbeddedResource Include="..\walls.svg" />
-    <EmbeddedResource Include="..\found.svg" />
-    <EmbeddedResource Include="..\roof1sc.svg" />
-    <EmbeddedResource Include="..\roof2sc.svg" />
+    <EmbeddedResource Include="Imgs\Graph\bolt_distance.png" />
+    <EmbeddedResource Include="Imgs\Graph\bolt_sizes.png" />
+    <EmbeddedResource Include="Imgs\Graph\walls.png" />
+    <EmbeddedResource Include="Imgs\Graph\roof1sc.png" />
+    <EmbeddedResource Include="Imgs\Graph\roof2sc.png" />
+    <EmbeddedResource Include="Imgs\Graph\found.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />
@@ -77,4 +77,9 @@
     <Compile Include="AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Content Include="Imgs\Anchors\drivein.png">
+      <DeployService-UseProjectRelativePath>true</DeployService-UseProjectRelativePath>
+    </Content>
+  </ItemGroup>
 </Project>
