@@ -13,4 +13,9 @@ namespace Summer_work
 			Application.Run ();
 		}
 	}
+
+	enum Materials
+	{
+		GKL, Tree, Metal, Brick, Concrete, FoamBlock
+	}
 }

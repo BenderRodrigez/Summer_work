@@ -153,6 +153,7 @@ public partial class MainWindow
 		this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 		// Container child MainWindow.Gtk.Container+ContainerChild
 		this.hbox2 = new global::Gtk.HBox ();
+		this.hbox2.Name = "hbox2";
 		this.hbox2.Spacing = 6;
 		// Container child hbox2.Gtk.Box+BoxChild
 		this.UIManager.AddUiFromString ("<ui><toolbar name='toolbar2'><toolitem name='openAction1' action='openAction1'/><toolitem name='saveAction1' action='saveAction1'/></toolbar></ui>");
@@ -171,7 +172,7 @@ public partial class MainWindow
 		this.notebook1 = new global::Gtk.Notebook ();
 		this.notebook1.CanFocus = true;
 		this.notebook1.Name = "notebook1";
-		this.notebook1.CurrentPage = 2;
+		this.notebook1.CurrentPage = 0;
 		// Container child notebook1.Gtk.Notebook+NotebookChild
 		this.hbox1 = new global::Gtk.HBox ();
 		this.hbox1.Name = "hbox1";

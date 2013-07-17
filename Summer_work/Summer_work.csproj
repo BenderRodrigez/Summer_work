@@ -75,6 +75,10 @@
     <Compile Include="gtk-gui\MainWindow.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Mount.cs" />
+    <Compile Include="Anchor.cs" />
+    <Compile Include="Screw.cs" />
+    <Compile Include="Dowel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
