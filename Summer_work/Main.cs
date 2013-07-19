@@ -18,4 +18,19 @@ namespace Summer_work
 	{
 		GKL, Tree, Metal, Brick, Concrete, FoamBlock
 	}
+
+	enum AnchorType
+	{
+		Driven, Frame, Sleeve, Wedged
+	}
+
+	enum DowelType
+	{
+		Standart, Butterfly, Nail
+	}
+
+	enum ScrewType
+	{
+		Tree, Metal, PO, PS, Roof, Uni, Capercaillie
+	}
 }

@@ -68,6 +68,21 @@
     <EmbeddedResource Include="Imgs\Graph\roof1sc.png" />
     <EmbeddedResource Include="Imgs\Graph\roof2sc.png" />
     <EmbeddedResource Include="Imgs\Graph\found.png" />
+    <EmbeddedResource Include="Imgs\Anchors\frame.png" />
+    <EmbeddedResource Include="Imgs\Anchors\sleeve.png" />
+    <EmbeddedResource Include="Imgs\Anchors\wedgedt2.png" />
+    <EmbeddedResource Include="Imgs\Anchors\drivein.png" />
+    <EmbeddedResource Include="Imgs\Screws\capercaillie.png" />
+    <EmbeddedResource Include="Imgs\Screws\concrete.png" />
+    <EmbeddedResource Include="Imgs\Screws\metal.png" />
+    <EmbeddedResource Include="Imgs\Screws\PO.png" />
+    <EmbeddedResource Include="Imgs\Screws\PS.png" />
+    <EmbeddedResource Include="Imgs\Screws\roofs.png" />
+    <EmbeddedResource Include="Imgs\Screws\tree.png" />
+    <EmbeddedResource Include="Imgs\Screws\uni.png" />
+    <EmbeddedResource Include="Imgs\Dowels\butterfly.png" />
+    <EmbeddedResource Include="Imgs\Dowels\nail.png" />
+    <EmbeddedResource Include="Imgs\Dowels\standart.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />
@@ -81,9 +96,4 @@
     <Compile Include="Dowel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Content Include="Imgs\Anchors\drivein.png">
-      <DeployService-UseProjectRelativePath>true</DeployService-UseProjectRelativePath>
-    </Content>
-  </ItemGroup>
 </Project>

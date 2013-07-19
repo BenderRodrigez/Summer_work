@@ -2,18 +2,25 @@ using System;
 
 namespace Summer_work
 {
-	public class Mount
+	public abstract class Mount
 	{
-		private float max_avulsion_force;
-		private float max_cut_force;
-		private bool is_selfdrill;
-		private bool is_throughwall;
-		private float d;
-		private float lenght;
-		private Materials[] accepted_material;
-		private float max_a;
-		private float max_s;
-		private string img_name;
+		public float max_avulsion_force;
+		public float max_cut_force;
+		public bool is_selfdrill;
+		public bool is_throughwall;
+		public float d;
+		public float lenght;
+		public Materials[] accepted_material;
+		public float max_a;
+		public float max_s;
+		public string img_name;
+
+		public const float infinity = 99999;
+
+		public abstract bool CanPassByLenght(float totalLenght);
+		//public abstract bool CanPassByBorderLenght(float s, int pcs);
+		public abstract bool CanPassByForce(int vector, float force);
+		public abstract bool CanByMaterial(Materials what, Materials wher);// 0 = what; 1 = where
 
 		public Mount ()
 		{
