@@ -1,4 +1,10 @@
 using System;
+using System.Resources;
+using System.IO;
+using System.Reflection;
+using System.Collections.Generic;
+using Summer_work;
+using System.Text.RegularExpressions;
 
 namespace Summer_work
 {
@@ -62,13 +68,13 @@ namespace Summer_work
 			switch (vector) {
 			case -1:
 				return true;
-			break;
 			case 0:
 				return force < max_cut_force;
-			break;
 			case 1:
 				return force < max_avulsion_force;
 			}
+
+			return false;
 		}
 
 		public override bool CanByMaterial (Materials what, Materials wher)
@@ -81,6 +87,79 @@ namespace Summer_work
 				if(accepted_material[i] == wher)
 					answer = true;
 			return answer;
+		}
+
+		public override void ReadDataResourses ()
+		{
+			ScrewType type;
+			float max_avulsion_force;
+			float max_cut_force;
+			bool is_throughwall;
+			bool is_selfdrill;
+			float d;
+			float lenght;
+			Materials[] accepted_material;
+			float max_a;
+			float max_s;
+
+			Stream str;
+			System.Reflection.Assembly _assembly;
+			_assembly = Assembly.GetExecutingAssembly ();
+			str = _assembly.GetManifestResourceStream ("Summer_work.Data.Screw.dat");
+			string s;
+			StreamReader strr = new StreamReader (str);
+			while ((s = strr.ReadLine()) != null) {
+				while ((s = strr.ReadLine ()) != null && (s[0] == '#'));
+				string t;
+				t = s.Substring(0, s.IndexOf (" "));
+				s = s.Remove (0, s.IndexOf (" ") + 1);
+				Summer_work.ScrewType.TryParse<Summer_work.ScrewType>(t, out type);
+				t = s.Substring (0, s.IndexOf (" "));
+				s = s.Remove (0, s.IndexOf (" ") + 1);
+				max_avulsion_force = float.Parse (t);
+				t = s.Substring (0, s.IndexOf (" "));
+				s = s.Remove (0, s.IndexOf (" ") + 1);
+				max_cut_force = float.Parse (t);
+				if (s [0] == '1')
+					is_throughwall = true;
+				else
+					is_throughwall = false;
+				s = s.Remove (0, 2);
+				if (s [0] == '1')
+					is_selfdrill = true;
+				else
+					is_selfdrill = false;
+				s = s.Remove (0, 2);
+				t = s.Substring (0, s.IndexOf (" "));
+				s = s.Remove (0, s.IndexOf (" ") + 1);
+				d = float.Parse (t);
+				t = s.Substring (0, s.IndexOf (" "));
+				s = s.Remove (0, s.IndexOf (" ") + 1);
+				lenght = float.Parse (t);
+				t = s.Substring (0, s.IndexOf (" "));
+				s = s.Remove (0, s.IndexOf (" ") + 1);
+
+				//Используя регулярные выражения (pattern - что ищем, source - где ищем):
+				int sizeOfMat = new Regex (",").Matches (t).Count;
+				accepted_material = new Materials[sizeOfMat];
+				for (int i = 0; i < sizeOfMat-1; i++) {
+					string t1 = t.Substring(0, t.IndexOf(","));
+					t = t.Remove(0, t.IndexOf(",")+1);
+					Materials.TryParse<Summer_work.Materials>(t1, out accepted_material[i]);
+
+				}
+				Materials.TryParse<Summer_work.Materials>(t, out accepted_material[sizeOfMat-1]);
+
+				t = s.Substring (0, s.IndexOf (" "));
+				s = s.Remove (0, s.IndexOf (" ") + 1);
+				max_a = float.Parse (t);
+				t = s.Substring (0, s.IndexOf (" "));
+				s = s.Remove (0, s.IndexOf (" ") + 1);
+				max_s = float.Parse (t);
+
+				Screw sc = new Screw(type, max_avulsion_force, max_cut_force, is_throughwall, is_selfdrill, d, lenght, accepted_material, max_a, max_s);
+				Storage.screwDB.Add(sc);
+			}
 		}
 	}
 }

@@ -4,12 +4,12 @@
 public partial class MainWindow
 {
 	private global::Gtk.UIManager UIManager;
-	private global::Gtk.Action saveAction;
 	private global::Gtk.Action openAction;
+	private global::Gtk.Action saveAction;
 	private global::Gtk.Action openAction1;
 	private global::Gtk.Action saveAction1;
 	private global::Gtk.HBox hbox2;
-	private global::Gtk.Toolbar toolbar2;
+	private global::Gtk.Toolbar toolbar1;
 	private global::Gtk.Notebook notebook1;
 	private global::Gtk.HBox hbox1;
 	private global::Gtk.VBox vbox1;
@@ -55,13 +55,13 @@ public partial class MainWindow
 	private global::Gtk.SpinButton spinbutton21;
 	private global::Gtk.SpinButton spinbutton22;
 	private global::Gtk.SpinButton spinbutton23;
-	private global::Gtk.Label GtkLabel2;
+	private global::Gtk.Label GtkLabel3;
 	private global::Gtk.Label label1;
 	private global::Gtk.HBox hbox4;
 	private global::Gtk.VBox vbox5;
 	private global::Gtk.Image image3;
 	private global::Gtk.Frame frame3;
-	private global::Gtk.Alignment GtkAlignment;
+	private global::Gtk.Alignment GtkAlignment3;
 	private global::Gtk.Table table4;
 	private global::Gtk.ComboBox combobox4;
 	private global::Gtk.Label label13;
@@ -75,9 +75,9 @@ public partial class MainWindow
 	private global::Gtk.SpinButton spinbutton15;
 	private global::Gtk.SpinButton spinbutton16;
 	private global::Gtk.SpinButton spinbutton17;
-	private global::Gtk.Label GtkLabel3;
+	private global::Gtk.Label GtkLabel4;
 	private global::Gtk.Frame frame4;
-	private global::Gtk.Alignment GtkAlignment2;
+	private global::Gtk.Alignment GtkAlignment4;
 	private global::Gtk.Table table7;
 	private global::Gtk.Label label35;
 	private global::Gtk.Label label36;
@@ -89,7 +89,7 @@ public partial class MainWindow
 	private global::Gtk.SpinButton spinbutton26;
 	private global::Gtk.SpinButton spinbutton27;
 	private global::Gtk.SpinButton spinbutton28;
-	private global::Gtk.Label GtkLabel4;
+	private global::Gtk.Label GtkLabel5;
 	private global::Gtk.Label label2;
 	private global::Gtk.HBox hbox3;
 	private global::Gtk.VBox vbox3;
@@ -120,13 +120,13 @@ public partial class MainWindow
 	private global::Gtk.SpinButton minh;
 	private global::Gtk.SpinButton spinbutton6;
 	private global::Gtk.Frame frame5;
-	private global::Gtk.Alignment GtkAlignment3;
+	private global::Gtk.Alignment GtkAlignment5;
 	private global::Gtk.Table table8;
 	private global::Gtk.SpinButton bricksN;
 	private global::Gtk.SpinButton glueN;
 	private global::Gtk.Label label40;
 	private global::Gtk.Label label41;
-	private global::Gtk.Label GtkLabel5;
+	private global::Gtk.Label GtkLabel6;
 	private global::Gtk.Label label3;
 	
 	protected virtual void Build ()
@@ -135,12 +135,10 @@ public partial class MainWindow
 		// Widget MainWindow
 		this.UIManager = new global::Gtk.UIManager ();
 		global::Gtk.ActionGroup w1 = new global::Gtk.ActionGroup ("Default");
-		this.saveAction = new global::Gtk.Action ("saveAction", global::Mono.Unix.Catalog.GetString ("Сохранить"), null, "gtk-save");
-		this.saveAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Сохранить");
-		w1.Add (this.saveAction, null);
-		this.openAction = new global::Gtk.Action ("openAction", global::Mono.Unix.Catalog.GetString ("Открыть"), null, "gtk-open");
-		this.openAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Открыть");
+		this.openAction = new global::Gtk.Action ("openAction", null, null, "gtk-open");
 		w1.Add (this.openAction, null);
+		this.saveAction = new global::Gtk.Action ("saveAction", null, null, "gtk-save");
+		w1.Add (this.saveAction, null);
 		this.openAction1 = new global::Gtk.Action ("openAction1", null, null, "gtk-open");
 		w1.Add (this.openAction1, null);
 		this.saveAction1 = new global::Gtk.Action ("saveAction1", null, null, "gtk-save");
@@ -156,15 +154,15 @@ public partial class MainWindow
 		this.hbox2.Name = "hbox2";
 		this.hbox2.Spacing = 6;
 		// Container child hbox2.Gtk.Box+BoxChild
-		this.UIManager.AddUiFromString ("<ui><toolbar name='toolbar2'><toolitem name='openAction1' action='openAction1'/><toolitem name='saveAction1' action='saveAction1'/></toolbar></ui>");
-		this.toolbar2 = ((global::Gtk.Toolbar)(this.UIManager.GetWidget ("/toolbar2")));
-		this.toolbar2.Name = "toolbar2";
-		this.toolbar2.Orientation = ((global::Gtk.Orientation)(1));
-		this.toolbar2.ShowArrow = false;
-		this.toolbar2.ToolbarStyle = ((global::Gtk.ToolbarStyle)(0));
-		this.toolbar2.IconSize = ((global::Gtk.IconSize)(3));
-		this.hbox2.Add (this.toolbar2);
-		global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.toolbar2]));
+		this.UIManager.AddUiFromString ("<ui><toolbar name='toolbar1'><toolitem name='openAction1' action='openAction1'/><toolitem name='saveAction1' action='saveAction1'/></toolbar></ui>");
+		this.toolbar1 = ((global::Gtk.Toolbar)(this.UIManager.GetWidget ("/toolbar1")));
+		this.toolbar1.Name = "toolbar1";
+		this.toolbar1.Orientation = ((global::Gtk.Orientation)(1));
+		this.toolbar1.ShowArrow = false;
+		this.toolbar1.ToolbarStyle = ((global::Gtk.ToolbarStyle)(0));
+		this.toolbar1.IconSize = ((global::Gtk.IconSize)(3));
+		this.hbox2.Add (this.toolbar1);
+		global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.toolbar1]));
 		w2.Position = 0;
 		w2.Expand = false;
 		w2.Fill = false;
@@ -172,7 +170,7 @@ public partial class MainWindow
 		this.notebook1 = new global::Gtk.Notebook ();
 		this.notebook1.CanFocus = true;
 		this.notebook1.Name = "notebook1";
-		this.notebook1.CurrentPage = 0;
+		this.notebook1.CurrentPage = 2;
 		// Container child notebook1.Gtk.Notebook+NotebookChild
 		this.hbox1 = new global::Gtk.HBox ();
 		this.hbox1.Name = "hbox1";
@@ -669,11 +667,11 @@ public partial class MainWindow
 		w41.Fill = false;
 		this.GtkAlignment1.Add (this.vbox2);
 		this.frame1.Add (this.GtkAlignment1);
-		this.GtkLabel2 = new global::Gtk.Label ();
-		this.GtkLabel2.Name = "GtkLabel2";
-		this.GtkLabel2.LabelProp = global::Mono.Unix.Catalog.GetString ("Результат расчёта:");
-		this.GtkLabel2.UseMarkup = true;
-		this.frame1.LabelWidget = this.GtkLabel2;
+		this.GtkLabel3 = new global::Gtk.Label ();
+		this.GtkLabel3.Name = "GtkLabel3";
+		this.GtkLabel3.LabelProp = global::Mono.Unix.Catalog.GetString ("Результат расчёта:");
+		this.GtkLabel3.UseMarkup = true;
+		this.frame1.LabelWidget = this.GtkLabel3;
 		this.hbox1.Add (this.frame1);
 		global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.frame1]));
 		w44.Position = 1;
@@ -708,10 +706,10 @@ public partial class MainWindow
 		this.frame3.Name = "frame3";
 		this.frame3.ShadowType = ((global::Gtk.ShadowType)(0));
 		// Container child frame3.Gtk.Container+ContainerChild
-		this.GtkAlignment = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
-		this.GtkAlignment.Name = "GtkAlignment";
-		this.GtkAlignment.LeftPadding = ((uint)(12));
-		// Container child GtkAlignment.Gtk.Container+ContainerChild
+		this.GtkAlignment3 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+		this.GtkAlignment3.Name = "GtkAlignment3";
+		this.GtkAlignment3.LeftPadding = ((uint)(12));
+		// Container child GtkAlignment3.Gtk.Container+ContainerChild
 		this.table4 = new global::Gtk.Table (((uint)(3)), ((uint)(4)), false);
 		this.table4.Name = "table4";
 		this.table4.RowSpacing = ((uint)(6));
@@ -872,13 +870,13 @@ public partial class MainWindow
 		w58.RightAttach = ((uint)(4));
 		w58.XOptions = ((global::Gtk.AttachOptions)(4));
 		w58.YOptions = ((global::Gtk.AttachOptions)(4));
-		this.GtkAlignment.Add (this.table4);
-		this.frame3.Add (this.GtkAlignment);
-		this.GtkLabel3 = new global::Gtk.Label ();
-		this.GtkLabel3.Name = "GtkLabel3";
-		this.GtkLabel3.LabelProp = global::Mono.Unix.Catalog.GetString ("Параметры фундамента:");
-		this.GtkLabel3.UseMarkup = true;
-		this.frame3.LabelWidget = this.GtkLabel3;
+		this.GtkAlignment3.Add (this.table4);
+		this.frame3.Add (this.GtkAlignment3);
+		this.GtkLabel4 = new global::Gtk.Label ();
+		this.GtkLabel4.Name = "GtkLabel4";
+		this.GtkLabel4.LabelProp = global::Mono.Unix.Catalog.GetString ("Параметры фундамента:");
+		this.GtkLabel4.UseMarkup = true;
+		this.frame3.LabelWidget = this.GtkLabel4;
 		this.vbox5.Add (this.frame3);
 		global::Gtk.Box.BoxChild w61 = ((global::Gtk.Box.BoxChild)(this.vbox5 [this.frame3]));
 		w61.Position = 1;
@@ -893,10 +891,10 @@ public partial class MainWindow
 		this.frame4 = new global::Gtk.Frame ();
 		this.frame4.Name = "frame4";
 		// Container child frame4.Gtk.Container+ContainerChild
-		this.GtkAlignment2 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
-		this.GtkAlignment2.Name = "GtkAlignment2";
-		this.GtkAlignment2.LeftPadding = ((uint)(12));
-		// Container child GtkAlignment2.Gtk.Container+ContainerChild
+		this.GtkAlignment4 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+		this.GtkAlignment4.Name = "GtkAlignment4";
+		this.GtkAlignment4.LeftPadding = ((uint)(12));
+		// Container child GtkAlignment4.Gtk.Container+ContainerChild
 		this.table7 = new global::Gtk.Table (((uint)(5)), ((uint)(2)), false);
 		this.table7.Name = "table7";
 		this.table7.RowSpacing = ((uint)(6));
@@ -1031,13 +1029,13 @@ public partial class MainWindow
 		w72.RightAttach = ((uint)(2));
 		w72.XOptions = ((global::Gtk.AttachOptions)(4));
 		w72.YOptions = ((global::Gtk.AttachOptions)(4));
-		this.GtkAlignment2.Add (this.table7);
-		this.frame4.Add (this.GtkAlignment2);
-		this.GtkLabel4 = new global::Gtk.Label ();
-		this.GtkLabel4.Name = "GtkLabel4";
-		this.GtkLabel4.LabelProp = global::Mono.Unix.Catalog.GetString ("Результат:");
-		this.GtkLabel4.UseMarkup = true;
-		this.frame4.LabelWidget = this.GtkLabel4;
+		this.GtkAlignment4.Add (this.table7);
+		this.frame4.Add (this.GtkAlignment4);
+		this.GtkLabel5 = new global::Gtk.Label ();
+		this.GtkLabel5.Name = "GtkLabel5";
+		this.GtkLabel5.LabelProp = global::Mono.Unix.Catalog.GetString ("Результат:");
+		this.GtkLabel5.UseMarkup = true;
+		this.frame4.LabelWidget = this.GtkLabel5;
 		this.hbox4.Add (this.frame4);
 		global::Gtk.Box.BoxChild w75 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.frame4]));
 		w75.Position = 1;
@@ -1378,10 +1376,10 @@ public partial class MainWindow
 		this.frame5 = new global::Gtk.Frame ();
 		this.frame5.Name = "frame5";
 		// Container child frame5.Gtk.Container+ContainerChild
-		this.GtkAlignment3 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
-		this.GtkAlignment3.Name = "GtkAlignment3";
-		this.GtkAlignment3.LeftPadding = ((uint)(12));
-		// Container child GtkAlignment3.Gtk.Container+ContainerChild
+		this.GtkAlignment5 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+		this.GtkAlignment5.Name = "GtkAlignment5";
+		this.GtkAlignment5.LeftPadding = ((uint)(12));
+		// Container child GtkAlignment5.Gtk.Container+ContainerChild
 		this.table8 = new global::Gtk.Table (((uint)(2)), ((uint)(2)), false);
 		this.table8.Name = "table8";
 		this.table8.RowSpacing = ((uint)(6));
@@ -1433,13 +1431,13 @@ public partial class MainWindow
 		w107.BottomAttach = ((uint)(2));
 		w107.XOptions = ((global::Gtk.AttachOptions)(4));
 		w107.YOptions = ((global::Gtk.AttachOptions)(4));
-		this.GtkAlignment3.Add (this.table8);
-		this.frame5.Add (this.GtkAlignment3);
-		this.GtkLabel5 = new global::Gtk.Label ();
-		this.GtkLabel5.Name = "GtkLabel5";
-		this.GtkLabel5.LabelProp = global::Mono.Unix.Catalog.GetString ("Результат:");
-		this.GtkLabel5.UseMarkup = true;
-		this.frame5.LabelWidget = this.GtkLabel5;
+		this.GtkAlignment5.Add (this.table8);
+		this.frame5.Add (this.GtkAlignment5);
+		this.GtkLabel6 = new global::Gtk.Label ();
+		this.GtkLabel6.Name = "GtkLabel6";
+		this.GtkLabel6.LabelProp = global::Mono.Unix.Catalog.GetString ("Результат:");
+		this.GtkLabel6.UseMarkup = true;
+		this.frame5.LabelWidget = this.GtkLabel6;
 		this.hbox3.Add (this.frame5);
 		global::Gtk.Box.BoxChild w110 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.frame5]));
 		w110.Position = 1;
@@ -1459,10 +1457,12 @@ public partial class MainWindow
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
 		}
-		this.DefaultWidth = 1130;
+		this.DefaultWidth = 1245;
 		this.DefaultHeight = 629;
 		this.Show ();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
+		//this.openAction.Activated += new global::System.EventHandler (this.OnOpenActionActivated);
+		//this.saveAction.Activated += new global::System.EventHandler (this.OnSaveActionActivated);
 		this.openAction1.Activated += new global::System.EventHandler (this.OnOpenAction1Activated);
 		this.saveAction1.Activated += new global::System.EventHandler (this.OnSaveAction1Activated);
 		this.combobox2.Changed += new global::System.EventHandler (this.OnCombobox2Changed);

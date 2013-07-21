@@ -83,6 +83,9 @@
     <EmbeddedResource Include="Imgs\Dowels\butterfly.png" />
     <EmbeddedResource Include="Imgs\Dowels\nail.png" />
     <EmbeddedResource Include="Imgs\Dowels\standart.png" />
+    <EmbeddedResource Include="Data\Anchors.dat" />
+    <EmbeddedResource Include="Data\Dowels.dat" />
+    <EmbeddedResource Include="Data\Screw.dat" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />

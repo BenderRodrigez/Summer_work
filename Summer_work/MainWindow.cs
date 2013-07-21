@@ -3,6 +3,9 @@ using Gtk;
 using System.Resources;
 using System.IO;
 using System.Reflection;
+using System.Collections.Generic;
+using Summer_work;
+using System.Text.RegularExpressions;
 
 public partial class MainWindow: Gtk.Window
 {	
@@ -39,7 +42,7 @@ public partial class MainWindow: Gtk.Window
 
 	protected void OnOpenAction1Activated (object sender, EventArgs e)
 	{
-		Gtk.FileChooserDialog fc=
+				Gtk.FileChooserDialog fc=
 		new Gtk.FileChooserDialog("Выберете файл",
 		                            this,
 		                            FileChooserAction.Open,
@@ -54,6 +57,7 @@ public partial class MainWindow: Gtk.Window
 		//Don't forget to call Destroy() or the FileChooserDialog window won't get closed.
 		fc.Destroy();
 	}
+
 	protected void OnSaveAction1Activated (object sender, EventArgs e)
 	{
 		Gtk.FileChooserDialog fc =

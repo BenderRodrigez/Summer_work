@@ -1,0 +1,5 @@
+#Anchor.Type max_avulsion_force(kgs) max_cut_force(kgs) is_throughwall(1,0) d(mm) lenght(mm) accepted_material(, - seporator) max_a(mm) max_s(mm)
+Driven 100 100 0 10 25 Brick, Concrete, FoamBlock 50 100
+Frame 100 100 0 10 72 Brick, Concrete, FoamBlock 144 288
+Sleeve 100 100 0 8 100 Brick, Concrete, FoamBlock 200 400
+Wedged 100 100 0 8 80 Brick, Concrete, FoamBlock 160 320

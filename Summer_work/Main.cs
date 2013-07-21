@@ -1,5 +1,7 @@
 using System;
 using Gtk;
+using Summer_work;
+using System.Collections.Generic;
 
 namespace Summer_work
 {
@@ -14,22 +16,30 @@ namespace Summer_work
 		}
 	}
 
-	enum Materials
+	class Storage
+	{
+		public static List<Mount> passed;
+		public static List<Anchor> anchorsDB;
+		public static List<Dowel> dowelsDB;
+		public static List<Screw> screwDB;
+	}
+
+	public enum Materials
 	{
 		GKL, Tree, Metal, Brick, Concrete, FoamBlock
 	}
 
-	enum AnchorType
+	public enum AnchorType
 	{
 		Driven, Frame, Sleeve, Wedged
 	}
 
-	enum DowelType
+	public enum DowelType
 	{
 		Standart, Butterfly, Nail
 	}
 
-	enum ScrewType
+	public enum ScrewType
 	{
 		Tree, Metal, PO, PS, Roof, Uni, Capercaillie
 	}
