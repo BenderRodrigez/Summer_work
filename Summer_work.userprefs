@@ -1,13 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Summer_work/Dowel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Summer_work/Anchor.cs">
     <Files>
-      <File FileName="Summer_work/Main.cs" Line="17" Column="9" />
-      <File FileName="Summer_work/MainWindow.cs" Line="27" Column="90" />
-      <File FileName="Summer_work/Mount.cs" Line="23" Column="68" />
-      <File FileName="Summer_work/Anchor.cs" Line="89" Column="36" />
-      <File FileName="Summer_work/Screw.cs" Line="83" Column="18" />
-      <File FileName="Summer_work/Dowel.cs" Line="45" Column="5" />
+      <File FileName="Summer_work/Main.cs" Line="24" Column="17" />
+      <File FileName="Summer_work/MainWindow.cs" Line="72" Column="16" />
+      <File FileName="Summer_work/Mount.cs" Line="5" Column="2" />
+      <File FileName="Summer_work/Anchor.cs" Line="158" Column="7" />
+      <File FileName="Summer_work/Screw.cs" Line="161" Column="29" />
+      <File FileName="Summer_work/Dowel.cs" Line="146" Column="13" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

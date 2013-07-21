@@ -1,8 +1,8 @@
 #Screw.Type max_avulsion_force(kgs) max_cut_force(kgs) is_throughwall(1,0) is_selfdrill(1,0) d(mm) lenght(mm) accepted_material(, - seporator) max_a(mm) max_s(mm)
-Tree 100 100 0 1 4.2 40 GKL, Tree 80 160
-Metal 100 100 0 1 4.2 40 GKL, Tree, Metal 80 160
-PO 100 100 0 1 4.2 32 GKL, Tree, Metal 64 128
-PS 100 100 0 1 4.2 32 GKL, Tree, Metal 64 128
-Roof 100 100 0 1 4.8 25 Tree, Metal 50 100
-Uni 100 100 0 0 3.5 35 GKL, Tree, Metal 70 140
-Capercaillie 100 100 0 0 8 100 Tree 200 400
+Tree 100 100 0 1 4.2 40 GKL,Tree,Dowel 80 160
+Metal 100 100 0 1 4.2 40 GKL,Tree,Metal,Dowel 80 160
+PO 100 100 0 1 4.2 32 GKL,Tree,Metal,Dowel 64 128
+PS 100 100 0 1 4.2 32 GKL,Tree,Metal 64 128
+Roof 100 100 0 1 4.8 25 Tree,Metal 50 100
+Uni 100 100 0 0 3.5 35 GKL,Tree,Metal,Dowel 70 140
+Capercaillie 100 100 0 0 8 100 Tree,Dowel 200 400

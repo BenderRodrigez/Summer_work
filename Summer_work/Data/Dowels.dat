@@ -1,4 +1,4 @@
-#Dwels.Type max_avulsion_force(kgs) is_throughwall(1,0) is_selfdrill(1,0) d(mm) lenght(mm) accepted_material(, - seporator) max_a(mm) max_s(mm)
-Standart 100 100 0 0 6 30 Brick, Concrete, FoamBlock 60 120
-Butterfly 100 100 1 0 6 50 Brick, Concrete, FoamBlock 100 200
-Nail 100 100 0 0 6 40 Brick, Concrete, FoamBlock 80 160
+#Dwels.Type max_avulsion_force(kgs) is_throughwall(1,0) is_selfdrill(1,0) d(mm) lenght(mm) accepted_material(, - seporator) max_a(mm) max_s(mm) accepted_screw_d(, - seporator)
+Standart 100 100 0 0 6 30 Brick,Concrete,FoamBlock 60 120 3.5,4,4.5
+Butterfly 100 100 1 0 6 50 Brick,Concrete,FoamBlock 100 200 3.5,4,4.5
+Nail 100 100 0 0 6 40 Brick,Concrete,FoamBlock 80 160 4

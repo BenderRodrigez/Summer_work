@@ -16,17 +16,9 @@ namespace Summer_work
 		}
 	}
 
-	class Storage
-	{
-		public static List<Mount> passed;
-		public static List<Anchor> anchorsDB;
-		public static List<Dowel> dowelsDB;
-		public static List<Screw> screwDB;
-	}
-
 	public enum Materials
 	{
-		GKL, Tree, Metal, Brick, Concrete, FoamBlock
+		GKL, Tree, Metal, Brick, Concrete, FoamBlock, Dowel
 	}
 
 	public enum AnchorType

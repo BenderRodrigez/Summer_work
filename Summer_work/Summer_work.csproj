@@ -97,6 +97,7 @@
     <Compile Include="Anchor.cs" />
     <Compile Include="Screw.cs" />
     <Compile Include="Dowel.cs" />
+    <Compile Include="Storage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
