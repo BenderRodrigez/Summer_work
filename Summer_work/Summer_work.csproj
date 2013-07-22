@@ -98,6 +98,8 @@
     <Compile Include="Screw.cs" />
     <Compile Include="Dowel.cs" />
     <Compile Include="Storage.cs" />
+    <Compile Include="Warn.cs" />
+    <Compile Include="gtk-gui\Summer_work.Warn.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

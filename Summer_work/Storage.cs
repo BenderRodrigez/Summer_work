@@ -16,7 +16,7 @@ namespace Summer_work
 		public static List<Screw> screwDB = new List<Screw>();
 
 
-		public Stream GetStreamFromResource (string resName)
+		public static Stream GetStreamFromResource (string resName)
 		{
 			Stream str;
 			System.Reflection.Assembly _assembly;
@@ -25,9 +25,24 @@ namespace Summer_work
 			return str;
 		}
 
+		public static void GenerateByMaterialList (Materials what, Materials wall)
+		{
+			passed.Clear ();
+			foreach (Anchor anch in anchorsDB) {
+				if (anch.CanByMaterial (what, wall))
+					passed.Add (anch);
+			}
+			foreach (Dowel dow in dowelsDB) {
+				if (dow.CanByMaterial (what, wall))
+					passed.Add (dow);
+			}
+			foreach (Screw scr in screwDB) {
+				if(scr.CanByMaterial(what, wall))
+					passed.Add(scr);
+			}
+		}
 
-
-		public void ReadDataResoursesAnchor ()
+		public static void ReadDataResoursesAnchor ()
 		{
 			Summer_work.AnchorType type; 
 			float max_avulsion_force;
@@ -44,7 +59,10 @@ namespace Summer_work
 			StreamReader strr = new StreamReader(GetStreamFromResource("Summer_work.Data.Anchors.dat"));
 			while((s = strr.ReadLine()) != null)
 			{
-				while ((s = strr.ReadLine ()) != null && (s[0] == '#'));
+				if(s[0] == '#')
+					while ((s = strr.ReadLine ()) != null && (s[0] == '#'));
+				if(s == null)
+					return;
 				string t;
 				t = s.Substring(0, s.IndexOf (" "));
 				s = s.Remove (0, s.IndexOf (" ") + 1);
@@ -92,7 +110,7 @@ namespace Summer_work
 			}
 		}
 
-		public void ReadDataResoursesScrew ()
+		public static void ReadDataResoursesScrew ()
 		{
 			ScrewType type;
 			float max_avulsion_force;
@@ -108,7 +126,10 @@ namespace Summer_work
 			string s;
 			StreamReader strr = new StreamReader(GetStreamFromResource("Summer_work.Data.Screw.dat"));
 			while ((s = strr.ReadLine()) != null) {
-				while ((s = strr.ReadLine ()) != null && (s[0] == '#'));
+				if(s[0] == '#')
+					while ((s = strr.ReadLine ()) != null && (s[0] == '#'));
+				if(s == null)
+					return;
 				string t;
 				t = s.Substring(0, s.IndexOf (" "));
 				s = s.Remove (0, s.IndexOf (" ") + 1);
@@ -159,10 +180,11 @@ namespace Summer_work
 			}
 		}
 
-		public void ReadDataResoursesDowels ()
+		public static void ReadDataResoursesDowels ()
 		{
 			DowelType type;
 			float max_avulsion_force;
+			float max_cut_force;
 			bool is_throughwall;
 			bool is_selfdrill;
 			float d;
@@ -175,8 +197,10 @@ namespace Summer_work
 			string s;
 			StreamReader strr = new StreamReader(GetStreamFromResource("Summer_work.Data.Dowels.dat"));
 			while ((s = strr.ReadLine()) != null) {
-				while ((s = strr.ReadLine ()) != null && (s[0] == '#'))
-					;
+				if(s[0] == '#')
+					while ((s = strr.ReadLine ()) != null && (s[0] == '#'));
+				if(s == null)
+					return;
 				string t;
 				t = s.Substring (0, s.IndexOf (" "));
 				s = s.Remove (0, s.IndexOf (" ") + 1);
@@ -184,6 +208,9 @@ namespace Summer_work
 				t = s.Substring (0, s.IndexOf (" "));
 				s = s.Remove (0, s.IndexOf (" ") + 1);
 				max_avulsion_force = float.Parse (t);
+				t = s.Substring (0, s.IndexOf (" "));
+				s = s.Remove (0, s.IndexOf (" ") + 1);
+				max_cut_force = float.Parse (t);
 				if (s [0] == '1')
 					is_throughwall = true;
 				else
@@ -221,13 +248,13 @@ namespace Summer_work
 				s = s.Remove (0, s.IndexOf (" ") + 1);
 				max_s = float.Parse (t);
 
-				int sizeOfScr = new Regex(",").Matches(s).Count;
+				int sizeOfScr = new Regex(";").Matches(s).Count;
 
 				accepted_screw_d = new float[sizeOfScr+1];
 				for(int i = 0; i < sizeOfScr; i++)
 				{
-					string t1 = s.Substring(0, s.IndexOf(","));
-					s =s.Remove(0, s.IndexOf(",")+1);
+					string t1 = s.Substring(0, s.IndexOf(";"));
+					s =s.Remove(0, s.IndexOf(";")+1);
 					accepted_screw_d[i] = float.Parse(t1);
 				}
 				accepted_screw_d[sizeOfScr] = float.Parse(s);
