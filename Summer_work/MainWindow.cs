@@ -25,12 +25,6 @@ public partial class MainWindow: Gtk.Window
 
 	protected void OnCombobox2Changed (object sender, EventArgs e)
 	{
-		System.Reflection.Assembly _assembly;//read a project resource files
-   		//Stream _imageStream;
-		//Stream _imageStream2;
-		_assembly = Assembly.GetExecutingAssembly();
-		//_imageStream = _assembly.GetManifestResourceStream("Summer_work.Imgs.Graph.roof1sc.png");
-		//_imageStream2 = _assembly.GetManifestResourceStream("Summer_work.Imgs.Graph.roof2sc.png");
 		switch (combobox2.ActiveText)
 		{
 		case "Односкатная": roofImg.Pixbuf = new Gdk.Pixbuf(Storage.GetStreamFromResource("Summer_work.Imgs.Graph.roof1sc.png"));
@@ -89,7 +83,7 @@ public partial class MainWindow: Gtk.Window
 	protected void OnButton3Clicked (object sender, EventArgs e)
 	{
 		float force = (float)force_spin.Value;
-		Materials mat;
+		Materials mat = new Materials();
 		bool success;
 		switch (objMaterial.ActiveText) {
 		case "Гипсокартон":
@@ -109,7 +103,7 @@ public partial class MainWindow: Gtk.Window
 			break;
 		}
 
-		Materials wall_mat;
+		Materials wall_mat = new Materials();
 		switch (wallMaterial.ActiveText) {
 		case "Кирпич":
 			wall_mat = Materials.Brick;
@@ -131,7 +125,7 @@ public partial class MainWindow: Gtk.Window
 			success &= false;
 			break;
 		}
-		int vector;
+		int vector = new int();
 		switch (planeToFix.ActiveText) {
 		case "Потолок":
 			vector = 1;
@@ -153,15 +147,43 @@ public partial class MainWindow: Gtk.Window
 		if ((force <= 0) || (lenght <= 0) || (wall_lenght <= 0) || !success) {
 			Warn msg = new Warn();
 			msg.SetLabel("Введите корректные даные!");
-			ResponseType resp = (ResponseType) msg.Run();
+			msg.Run();
 			msg.Destroy();
 			return;
 		}
 
 		//Here we start calulatings
 
+		Storage.passed.Clear();
+
+		Storage.GenerateByMaterialList(/*mat, */wall_mat);
+		Storage.GenerateByLenght(wall_lenght+lenght);
+		Storage.GenerateByForce(vector, force/def_points_N);
+	}
+
+	protected void OnButton65Activated (object sender, EventArgs e)
+	{
 
 	}
+
+	protected void OnButton65Clicked (object sender, EventArgs e)
+	{
+		int weight = (int)build_weight.Value;
+		int lenght = (int)build_lenght.Value;
+		float flat = (float)found_flat.Value;
+		float high = (float)hight.Value;
+		float deeps = (float)deep.Value;
+		//float add_P = (float)addit_P.Value;
+		//Beton choise here
+		float V1 = weight*lenght*(high+deeps);
+		float V2 = (weight-2*flat)*(lenght-2*flat)*(high+deeps);
+		float Volume = V1 - V2;
+		sand.Value = Volume;
+		concentre.Value = V1;
+		gravel.Value = V2;
+	}
+
+
 
 
 

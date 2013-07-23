@@ -77,16 +77,17 @@ namespace Summer_work
 			return false;
 		}
 
-		public override bool CanByMaterial (Materials what, Materials wher)
+		public override bool CanByMaterial (/*Materials what, */Materials wher)
 		{
-			bool answer = false;
-			for(int i = 0; i < this.accepted_material.Length; i++)
-				if(accepted_material[i] == what)
-					answer = true;
+			//bool answer = false;
+			bool answer1 = false;
+//			for(int i = 0; i < this.accepted_material.Length; i++)
+//				if(accepted_material[i] == what)
+//					answer |= true;
 			for(int i = 0; i < this.accepted_material.Length; i++)
 				if(accepted_material[i] == wher)
-					answer = true;
-			return answer;
+					answer1 |= true;
+			return /*answer && */answer1;
 		}
 	}
 }

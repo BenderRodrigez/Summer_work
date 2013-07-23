@@ -57,19 +57,23 @@ namespace Summer_work
 
 		public override bool CanPassByForce (int vector, float force)
 		{
-			return (this.max_avulsion_force*vector < force)&&(this.screw.CanPassByForce(vector,force));
+			if(this.screw != null)
+				return (this.max_avulsion_force*vector < force)&&(this.screw.CanPassByForce(vector,force));
+			else
+				return (this.max_avulsion_force*vector < force);
 		}
 
-		public override bool CanByMaterial (Materials what, Materials wher)
+		public override bool CanByMaterial (/*Materials what, */Materials wher)
 		{
-			bool answer = false;
-			for(int i = 0; i < this.accepted_material.Length; i++)
-				if(accepted_material[i] == what)
-					answer = true;
+			//bool answer = false;
+			bool answer1 = false;
+//			for(int i = 0; i < this.accepted_material.Length; i++)
+//				if(accepted_material[i] == what)
+//					answer |= true;
 			for(int i = 0; i < this.accepted_material.Length; i++)
 				if(accepted_material[i] == wher)
-					answer = true;
-			return answer;
+					answer1 |= true;
+			return /*answer && */answer1;
 		}
 
 		public override bool CanPassByLenght (float totalLenght)
