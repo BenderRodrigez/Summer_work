@@ -5,32 +5,22 @@
     <target-gtk-version>2.12</target-gtk-version>
   </configuration>
   <import>
-    <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <widget-library name="../bin/Debug/Summer_work.exe" internal="true" />
+    <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
   </import>
   <widget class="Gtk.Window" id="MainWindow" design-size="1245 629">
     <action-group name="Default">
-      <action id="openAction">
-        <property name="Type">Action</property>
-        <property name="Label" translatable="yes" />
-        <property name="StockId">gtk-open</property>
-        <signal name="Activated" handler="OnOpenActionActivated" />
-      </action>
-      <action id="saveAction">
-        <property name="Type">Action</property>
-        <property name="Label" translatable="yes" />
-        <property name="StockId">gtk-save</property>
-        <signal name="Activated" handler="OnSaveActionActivated" />
-      </action>
       <action id="openAction1">
         <property name="Type">Action</property>
-        <property name="Label" translatable="yes" />
+        <property name="Label" translatable="yes">_Open</property>
+        <property name="ShortLabel" translatable="yes">_Open</property>
         <property name="StockId">gtk-open</property>
         <signal name="Activated" handler="OnOpenAction1Activated" />
       </action>
       <action id="saveAction1">
         <property name="Type">Action</property>
-        <property name="Label" translatable="yes" />
+        <property name="Label" translatable="yes">_Save</property>
+        <property name="ShortLabel" translatable="yes">_Save</property>
         <property name="StockId">gtk-save</property>
         <signal name="Activated" handler="OnSaveAction1Activated" />
       </action>
@@ -51,7 +41,7 @@
             <property name="ShowArrow">False</property>
             <property name="ButtonStyle">Icons</property>
             <property name="IconSize">LargeToolbar</property>
-            <node name="__gtksharp_56_Stetic_Editor_ActionToolbar" type="Toolbar">
+            <node name="toolbar1" type="Toolbar">
               <node type="Toolitem" action="openAction1" />
               <node type="Toolitem" action="saveAction1" />
             </node>
@@ -67,7 +57,7 @@
           <widget class="Gtk.Notebook" id="notebook1">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
-            <property name="CurrentPage">1</property>
+            <property name="CurrentPage">0</property>
             <child>
               <widget class="Gtk.HBox" id="hbox1">
                 <property name="MemberName" />
@@ -137,8 +127,6 @@
                                 <property name="Type">TextOnly</property>
                                 <property name="Label" translatable="yes">Расчитать</property>
                                 <property name="UseUnderline">True</property>
-                                <signal name="Activated" handler="OnButton3Activated" />
-                                <signal name="Clicked" handler="OnButton3Clicked" />
                               </widget>
                               <packing>
                                 <property name="TopAttach">4</property>
@@ -1111,8 +1099,6 @@
                                     <property name="Type">TextOnly</property>
                                     <property name="Label" translatable="yes">Расчитать</property>
                                     <property name="UseUnderline">True</property>
-                                    <signal name="Activated" handler="OnButton65Activated" />
-                                    <signal name="Clicked" handler="OnButton65Clicked" />
                                   </widget>
                                   <packing>
                                     <property name="TopAttach">3</property>

@@ -33,6 +33,6 @@ namespace Summer_work
 
 	public enum ScrewType
 	{
-		Tree, Metal, PO, PS, Roof, Uni, Capercaillie
+		Tree, Metal, PO, PS, Roof, Uni, Capercaillie, Concerete
 	}
 }

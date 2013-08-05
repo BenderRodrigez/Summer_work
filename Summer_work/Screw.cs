@@ -89,6 +89,28 @@ namespace Summer_work
 					answer1 |= true;
 			return /*answer && */answer1;
 		}
+
+		public override string ToString ()
+		{
+			string s = this.type.ToString () + ' ';
+			s += this.max_avulsion_force.ToString () + ' ';
+			s += this.max_cut_force.ToString () + ' ';
+			if (this.is_throughwall)
+				s += "1 ";
+			else
+				s += "0 ";
+			if (this.is_selfdrill)
+				s += "1 ";
+			else
+				s += "0 ";
+			s += this.d.ToString ();
+			s += this.lenght.ToString ();
+			for (int i = 0; i < this.accepted_material.Length; i++)
+				s += this.accepted_material [i].ToString ()+' ';
+			s += this.max_a.ToString() + ' ';
+			s += this.max_s.ToString();
+			return s;
+		}
 	}
 }
 

@@ -15,6 +15,7 @@ namespace Summer_work
 		Screw screw;//нужен ли он здесь?
 		public Dowel (DowelType type,
 		              float max_avulsion_force,
+		              float max_cut_force,
 		              bool is_throughwall,
 		              bool is_selfdrill,
 		              float d,
@@ -24,7 +25,7 @@ namespace Summer_work
 		              float max_s,
 		              float[] accepted_screw_d)
 		{
-			this.max_cut_force = infinity;
+			this.max_cut_force = max_cut_force;//To screws...
 			this.type = type;
 			this.max_avulsion_force = max_avulsion_force;
 			this.is_throughwall = is_throughwall;
@@ -79,6 +80,30 @@ namespace Summer_work
 		public override bool CanPassByLenght (float totalLenght)
 		{
 			return (this.lenght < totalLenght);
+		}
+
+		public override string ToString ()
+		{
+			string s = this.type.ToString () + ' ';
+			s += this.max_avulsion_force.ToString () + ' ';
+			s += this.max_cut_force.ToString () + ' ';
+			if (this.is_throughwall)
+				s += "1 ";
+			else
+				s += "0 ";
+			if (this.is_selfdrill)
+				s += "1 ";
+			else
+				s += "0 ";
+			s += this.d.ToString ();
+			s += this.lenght.ToString ();
+			for (int i = 0; i < this.accepted_material.Length; i++)
+				s += this.accepted_material [i].ToString ()+' ';
+			s += this.max_a.ToString() + ' ';
+			s += this.max_s.ToString();
+			for (int i = 0; i < this.accepted_screw_d.Length; i++)
+				s += ' ' + this.accepted_screw_d [i].ToString ();
+			return s;
 		}
 	}
 }

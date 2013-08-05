@@ -16,91 +16,275 @@ namespace Summer_work
 		public static List<Screw> screwDB = new List<Screw>();
 
 
-		/*public static void ConvertDB (string filename)
+		public static void ConvertDB (string filename)
 		{
 			StreamReader reader = new StreamReader (filename);
 			StreamWriter writer1 = new StreamWriter (GetStreamFromResource ("Summer_work.Data.Anchors.dat"));
 			StreamWriter writer2 = new StreamWriter (GetStreamFromResource ("Summer_work.Data.Dowels.dat"));
 			StreamWriter writer3 = new StreamWriter (GetStreamFromResource ("Summer_work.Data.Screw.dat"));
 
-			string s;
-			while ((s = reader.ReadLine()) != null) {
-				string t= s.Substring(0, s.IndexOf(' '));
-				Anchor anch;
-				Dowel dow;
-				Screw scr;
-				switch(t)
-				{
-				case "Анкер/болт":
-					s = s.Remove(0, s.IndexOf(' ')+1);
-					string t1 = s.Substring(0, s.LastIndexOf(' '));
-					switch(t1)
+            string s;
+            while ((s = reader.ReadLine()) != null)
+            {
+				AnchorType ant;
+				DowelType dwl;
+				ScrewType scrw;
+                float max_avulsion_force;
+		        float max_cut_force;
+		        bool is_selfdrill;
+                bool is_throughwall;
+		        float d;
+		        float lenght;
+		        Materials[] accepted_material;
+		        float max_a;
+		        float max_s;
+				float[] accepted_screw_d;
+				string[] srs = s.Split (' ');
+				string[] srs1;
+				switch (srs [0]) {
+				case "Анкер/болтсгайкой":
+					ant = AnchorType.Wedged;
+					srs1 = srs [srs.Length - 1].Split ('х');
+					d = float.Parse (srs1 [0]);
+					lenght = float.Parse (srs1 [1]);
+					max_avulsion_force = lenght * 80;
+					max_cut_force = d * 5 * 100;
+					is_selfdrill = false;
+					is_throughwall = false;
+					max_a = lenght * (float)1.5;
+					max_s = lenght * 3;
+					accepted_material = new Materials[]{Materials.Brick, Materials.Concrete, Materials.FoamBlock};
+					anchorsDB.Add (new Anchor (ant, max_avulsion_force, max_cut_force, is_throughwall, d, lenght, accepted_material, max_a, max_s, 0));
+					break;
+				case "Клиновойанкер":
+					ant = AnchorType.Sleeve;
+					srs1 = srs [srs.Length - 1].Split ('х');
+					d = float.Parse (srs1 [0]);
+					lenght = float.Parse (srs1 [1]);
+					max_avulsion_force = lenght * 80;
+					max_cut_force = d * 5 * 100;
+					is_selfdrill = false;
+					is_throughwall = false;
+					max_a = lenght * (float)1.5;
+					max_s = lenght * 3;
+					accepted_material = new Materials[]{Materials.Brick, Materials.Concrete, Materials.FoamBlock};
+					anchorsDB.Add (new Anchor (ant, max_avulsion_force, max_cut_force, is_throughwall, d, lenght, accepted_material, max_a, max_s, 0));
+					break;
+				case "Забивнойанкер":
+					ant = AnchorType.Driven;
+					srs1 = srs [srs.Length - 1].Split ('х');
+					d = float.Parse (srs1 [0]);
+					lenght = float.Parse (srs1 [1]);
+					max_avulsion_force = lenght * 80;
+					max_cut_force = d * 5 * 100;
+					is_selfdrill = false;
+					is_throughwall = false;
+					max_a = lenght * (float)1.5;
+					max_s = lenght * 3;
+					accepted_material = new Materials[]{Materials.Brick, Materials.Concrete, Materials.FoamBlock};
+					anchorsDB.Add (new Anchor (ant, max_avulsion_force, max_cut_force, is_throughwall, d, lenght, accepted_material, max_a, max_s, d));
+					break;
+				case "БолтDIN933":
+					//
+					break;
+				case "ГлухарьDIN571":
+					scrw = ScrewType.Capercaillie;
+					srs1 = srs [srs.Length - 1].Split ('х');
+					d = float.Parse (srs1 [0]);
+					lenght = float.Parse (srs1 [1]);
+					max_avulsion_force = lenght * 80;
+					max_cut_force = d * 5 * 100;
+					is_selfdrill = false;
+					is_throughwall = false;
+					max_a = lenght * (float)1.5;
+					max_s = lenght * 3;
+					accepted_material = new Materials[]{Materials.Tree, Materials.Dowel};
+					screwDB.Add (new Screw (scrw, max_avulsion_force, max_cut_force, is_throughwall, is_selfdrill, d, lenght, accepted_material, max_a, max_s));
+					break;
+				case "Дюбель\"бабочка\"":
+					dwl = DowelType.Butterfly;
+					srs1 = srs [srs.Length - 1].Split ('х');
+					d = float.Parse (srs1 [0]);
+					lenght = float.Parse (srs1 [1]);
+					max_avulsion_force = lenght * 80;
+					is_selfdrill = false;
+					is_throughwall = true;
+					max_a = lenght * (float)1.5;
+					max_s = lenght * 3;
+					accepted_material = new Materials[]{Materials.GKL, Materials.Tree};
+					accepted_screw_d = new float[3];
+					accepted_screw_d [0] = (float)4.2;
+					accepted_screw_d [1] = (float)4.5;
+					accepted_screw_d [2] = 5;
+					max_cut_force = accepted_screw_d[2] * 5 * 100;
+					dowelsDB.Add(new Dowel(dwl, max_avulsion_force, max_cut_force, is_throughwall, is_selfdrill, d, lenght, accepted_material, max_a, max_s,accepted_screw_d));
+					break;
+				case "Дюбельсшурупом":
+					dwl = DowelType.Nail;
+					srs1 = srs [srs.Length - 1].Split ('х');
+					d = float.Parse (srs1 [0]);
+					lenght = float.Parse (srs1 [1]);
+					max_avulsion_force = lenght * 80;
+					is_selfdrill = false;
+					is_throughwall = false;
+					max_a = lenght * (float)1.5;
+					max_s = lenght * 3;
+					accepted_material = new Materials[]{Materials.Brick, Materials.FoamBlock, Materials.Concrete};
+					accepted_screw_d = new float[3];
+					accepted_screw_d[0] = (float)(d-2.5);
+					accepted_screw_d[1] = d-2;
+					accepted_screw_d[2] = (float)(d-1.5);
+					max_cut_force = accepted_screw_d[2] * 5 * 100;
+					dowelsDB.Add(new Dowel(dwl, max_avulsion_force, max_cut_force, is_throughwall, is_selfdrill, d, lenght, accepted_material, max_a, max_s,accepted_screw_d));
+					break;
+				case "Дюбельполипр.":
+					dwl = DowelType.Standart;
+					srs1 = srs [srs.Length - 1].Split ('х');
+					d = float.Parse (srs1 [0]);
+					lenght = float.Parse (srs1 [1]);
+					max_avulsion_force = lenght * 80;
+					is_selfdrill = false;
+					is_throughwall = false;
+					max_a = lenght * (float)1.5;
+					max_s = lenght * 3;
+					accepted_material = new Materials[]{Materials.GKL, Materials.Tree};
+					accepted_screw_d = new float[3];
+					accepted_screw_d[0] = (float)(d-2.5);
+					accepted_screw_d[1] = d-2;
+					accepted_screw_d[2] = (float)(d-1.5);
+					max_cut_force = accepted_screw_d[2] * 5 * 100;
+					dowelsDB.Add(new Dowel(dwl, max_avulsion_force, max_cut_force, is_throughwall, is_selfdrill, d, lenght, accepted_material, max_a, max_s,accepted_screw_d));
+					break;
+				case "Рамныйанкер":
+					ant = AnchorType.Frame;
+					srs1 = srs [srs.Length - 1].Split ('х');
+					d = float.Parse (srs1 [0]);
+					lenght = float.Parse (srs1 [1]);
+					max_avulsion_force = lenght * 80;
+					max_cut_force = d * 5 * 100;
+					is_selfdrill = false;
+					is_throughwall = false;
+					max_a = lenght * (float)1.5;
+					max_s = lenght * 3;
+					accepted_material = new Materials[]{Materials.Brick, Materials.Concrete, Materials.FoamBlock};
+					anchorsDB.Add (new Anchor (ant, max_avulsion_force, max_cut_force, is_throughwall, d, lenght, accepted_material, max_a, max_s, 0));
+					break;
+				case "Саморезскруп.рез./по":
+					scrw = ScrewType.Tree;
+					srs1 = srs [srs.Length - 2].Split ('х');
+					d = float.Parse (srs1 [0]);
+					lenght = float.Parse (srs1 [1]);
+					max_avulsion_force = lenght * 80;
+					max_cut_force = d * 5 * 100;
+					is_selfdrill = false;
+					is_throughwall = false;
+					max_a = lenght * (float)1.5;
+					max_s = lenght * 3;
+					accepted_material = new Materials[]{Materials.GKL, Materials.Tree, Materials.Dowel};
+					screwDB.Add (new Screw (scrw, max_avulsion_force, max_cut_force, is_throughwall, is_selfdrill, d, lenght, accepted_material, max_a, max_s));
+					break;
+				case "Саморезсчаст.рез./по":
+					scrw = ScrewType.Metal;
+					srs1 = srs [srs.Length - 2].Split ('х');
+					d = float.Parse (srs1 [0]);
+					lenght = float.Parse (srs1 [1]);
+					max_avulsion_force = lenght * 80;
+					max_cut_force = d * 5 * 100;
+					is_selfdrill = false;
+					is_throughwall = false;
+					max_a = lenght * (float)1.5;
+					max_s = lenght * 3;
+					accepted_material = new Materials[]{Materials.Tree, Materials.Metal, Materials.GKL, Materials.Dowel};
+					screwDB.Add (new Screw (scrw, max_avulsion_force, max_cut_force, is_throughwall, is_selfdrill, d, lenght, accepted_material, max_a, max_s));
+					break;
+				case "Саморезспрессшайбой":
+					switch(srs[2])
 					{
-					case "с гайкой":
-						s = s.Remove(0, s.LastIndexOf(' '));
-						float d = float.Parse(s.Substring(0, s.IndexOf('х')));
-						float lenght = float.Parse(s.Substring(s.IndexOf('х'), s.Length-1));
-						anch = new Anchor(AnchorType.Wedged, 100, 100, false, d, lenght, 
+					case "острый":
+						scrw = ScrewType.PO;
+						srs1 = srs [srs.Length - 3].Split ('х');
+						d = float.Parse (srs1 [0]);
+						lenght = float.Parse (srs1 [1]);
+						max_avulsion_force = lenght * 80;
+						max_cut_force = d * 5 * 100;
+						is_selfdrill = false;
+						is_throughwall = false;
+						max_a = lenght * (float)1.5;
+						max_s = lenght * 3;
+						accepted_material = new Materials[]{Materials.Tree, Materials.Metal, Materials.GKL, Materials.Dowel};
+						screwDB.Add (new Screw (scrw, max_avulsion_force, max_cut_force, is_throughwall, is_selfdrill, d, lenght, accepted_material, max_a, max_s));
 						break;
-					case "с ш/г":
-						s = s.Remove(0, s.LastIndexOf(' '));
+					case "сверло":
+						scrw = ScrewType.PS;
+						srs1 = srs [srs.Length - 3].Split ('х');
+						d = float.Parse (srs1 [0]);
+						lenght = float.Parse (srs1 [1]);
+						max_avulsion_force = lenght * 80;
+						max_cut_force = d * 5 * 100;
+						is_selfdrill = true;
+						is_throughwall = false;
+						max_a = lenght * (float)1.5;
+						max_s = lenght * 3;
+						accepted_material = new Materials[]{Materials.Tree, Materials.Metal, Materials.GKL};
+						screwDB.Add (new Screw (scrw, max_avulsion_force, max_cut_force, is_throughwall, is_selfdrill, d, lenght, accepted_material, max_a, max_s));
 						break;
 					}
 					break;
-				case "Забивной":
-					break;
-				case "Болт":
-					break;
-				case "Глухарь":
-					break;
-				case "Дюбель":
-					s = s.Remove(0, s.IndexOf(' ')+1);
-					string t2 = s.Substring(0, s.IndexOf(' '));
-					switch(t2)
-					{
-					case "бабочка":
-						s = s.Remove(0, s.LastIndexOf(' '));
-						break;
-					case "с шурупом":
-						s = s.Remove(0, s.LastIndexOf(' '));
-						break;
-					case "полипр. синие":
-						s = s.Remove(0, s.LastIndexOf(' '));
-						break;
-					}
-					break;
-				case "Рамный":
+				case "Саморезпо":
+					scrw = ScrewType.Concerete;
+					srs1 = srs [srs.Length - 1].Split ('х');
+					d = float.Parse (srs1 [0]);
+					lenght = float.Parse (srs1 [1]);
+					max_avulsion_force = lenght * 80;
+					max_cut_force = d * 5 * 100;
+					is_selfdrill = false;
+					is_throughwall = false;
+					max_a = lenght * (float)1.5;
+					max_s = lenght * 3;
+					accepted_material = new Materials[]{Materials.Concrete, Materials.Brick, Materials.FoamBlock};
+					screwDB.Add (new Screw (scrw, max_avulsion_force, max_cut_force, is_throughwall, is_selfdrill, d, lenght, accepted_material, max_a, max_s));
 					break;
 				case "Саморез":
-					s = s.Remove(0, s.IndexOf(' ')+1);
-					string t3 = s.Substring(0, s.IndexOf(' '));
-					switch(t3)
-					{
-					case "с круп.рез./по дереву":
-						s = s.Remove(0, s.LastIndexOf(' '));
-						break;
-					case "с част.рез./по металлу":
-						s = s.Remove(0, s.LastIndexOf(' '));
-						break;
-					case "с прессшайбой острый":
-						s = s.Remove(0, s.LastIndexOf(' '));
-						break;
-					case "с прессшайбой сверло":
-						s = s.Remove(0, s.LastIndexOf(' '));
-						break;
-					case "по бетону":
-						s = s.Remove(0, s.LastIndexOf(' '));
-						break;
-					case "кровельный":
-						s = s.Remove(0, s.LastIndexOf(' '));
-						break;
-					}
+					scrw = ScrewType.Roof;
+					srs1 = srs [srs.Length - 1].Split ('х');
+					d = float.Parse (srs1 [0]);
+					lenght = float.Parse (srs1 [1]);
+					max_avulsion_force = lenght * 80;
+					max_cut_force = d * 5 * 100;
+					is_selfdrill = true;
+					is_throughwall = false;
+					max_a = lenght * (float)1.5;
+					max_s = lenght * 3;
+					accepted_material = new Materials[]{Materials.Tree, Materials.Metal};
+					screwDB.Add (new Screw (scrw, max_avulsion_force, max_cut_force, is_throughwall, is_selfdrill, d, lenght, accepted_material, max_a, max_s));
 					break;
 				case "Шуруп":
+					scrw = ScrewType.Uni;
+					srs1 = srs [srs.Length - 1].Split ('х');
+					d = float.Parse (srs1 [0]);
+					lenght = float.Parse (srs1 [1]);
+					max_avulsion_force = lenght * 80;
+					max_cut_force = d * 5 * 100;
+					is_selfdrill = false;
+					is_throughwall = false;
+					max_a = lenght * (float)1.5;
+					max_s = lenght * 3;
+					accepted_material = new Materials[]{Materials.Tree, Materials.Metal, Materials.GKL, Materials.Dowel};
+					screwDB.Add (new Screw (scrw, max_avulsion_force, max_cut_force, is_throughwall, is_selfdrill, d, lenght, accepted_material, max_a, max_s));
 					break;
 				}
-			}
-		}*/
+            }
+			foreach (Anchor anch in anchorsDB)
+				writer1.WriteLine (anch.ToString ());
+			foreach (Dowel dwl in dowelsDB)
+				writer2.WriteLine (dwl.ToString ());
+			foreach (Screw scrw in screwDB)
+				writer3.WriteLine (scrw.ToString ());
+			reader.Close ();
+			writer1.Close ();
+			writer2.Close ();
+			writer3.Close ();
+		}
 
 		public static Stream GetStreamFromResource (string resName)
 		{
@@ -440,8 +624,8 @@ namespace Summer_work
 					accepted_screw_d[i] = float.Parse(t1);
 				}
 				accepted_screw_d[sizeOfScr] = float.Parse(s);
-
-				Dowel dw = new Dowel (type, max_avulsion_force, is_throughwall, is_selfdrill, d, lenght, accepted_material, max_a, max_s, accepted_screw_d);
+				max_cut_force = accepted_screw_d [sizeOfScr - 1] * 5 * 100;
+				Dowel dw = new Dowel (type, max_avulsion_force, max_cut_force, is_throughwall, is_selfdrill, d, lenght, accepted_material, max_a, max_s, accepted_screw_d);
 
 				Storage.dowelsDB.Add (dw);
 			}
