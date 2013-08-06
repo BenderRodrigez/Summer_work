@@ -95,14 +95,16 @@ namespace Summer_work
 				s += "1 ";
 			else
 				s += "0 ";
-			s += this.d.ToString ();
-			s += this.lenght.ToString ();
-			for (int i = 0; i < this.accepted_material.Length; i++)
-				s += this.accepted_material [i].ToString ()+' ';
+			s += this.d.ToString ()+' ';
+			s += this.lenght.ToString ()+' ';
+			for (int i = 0; i < this.accepted_material.Length-1; i++)
+				s += this.accepted_material [i].ToString ()+',';
+			s += this.accepted_material [this.accepted_material.Length-1].ToString ()+' ';
 			s += this.max_a.ToString() + ' ';
-			s += this.max_s.ToString();
-			for (int i = 0; i < this.accepted_screw_d.Length; i++)
-				s += ' ' + this.accepted_screw_d [i].ToString ();
+			s += this.max_s.ToString()+' ';
+			s += this.accepted_screw_d [0].ToString ();
+			for (int i = 1; i < this.accepted_screw_d.Length; i++)
+				s += ';' + this.accepted_screw_d [i].ToString ();
 			return s;
 		}
 	}

@@ -10,7 +10,8 @@ public partial class MainWindow: Gtk.Window
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
-		Storage.ConvertDB("C:\\Users\\1\\Dropbox\\База.txt");
+		//Storage.ConvertDB("База.txt");
+		//Use, to create DB... Don't tuch...
 	}
 	
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
@@ -68,14 +69,5 @@ public partial class MainWindow: Gtk.Window
 			//
 		}
 		fc.Destroy();
-	}
-
-	protected void OnSaveActionActivated (object sender, EventArgs e)
-	{
-		throw new NotImplementedException ();
-	}
-	protected void OnOpenActionActivated (object sender, EventArgs e)
-	{
-		throw new NotImplementedException ();
 	}
 }

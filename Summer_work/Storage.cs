@@ -16,12 +16,16 @@ namespace Summer_work
 		public static List<Screw> screwDB = new List<Screw>();
 
 
-		public static void ConvertDB (string filename)
+		/*public static void ConvertDB (string filename)
 		{
 			StreamReader reader = new StreamReader (filename);
-			StreamWriter writer1 = new StreamWriter (GetStreamFromResource ("Summer_work.Data.Anchors.dat"));
-			StreamWriter writer2 = new StreamWriter (GetStreamFromResource ("Summer_work.Data.Dowels.dat"));
-			StreamWriter writer3 = new StreamWriter (GetStreamFromResource ("Summer_work.Data.Screw.dat"));
+			//Stream writer1 = GetStreamFromResource ("Summer_work.Data.Anchors.dat");
+			//StreamWriter writer1 = new StreamWriter (GetStreamFromResource ("Summer_work.Data.Anchors.dat"));
+			//StreamWriter writer2 = new StreamWriter (GetStreamFromResource ("Summer_work.Data.Dowels.dat"));
+			//StreamWriter writer3 = new StreamWriter (GetStreamFromResource ("Summer_work.Data.Screw.dat"));
+			StreamWriter writer1 = new StreamWriter("Anchors.dat");
+			StreamWriter writer2 = new StreamWriter("Dowels.dat");
+			StreamWriter writer3 = new StreamWriter("Screw.dat");
 
             string s;
             while ((s = reader.ReadLine()) != null)
@@ -121,7 +125,7 @@ namespace Summer_work
 					break;
 				case "Дюбельсшурупом":
 					dwl = DowelType.Nail;
-					srs1 = srs [srs.Length - 1].Split ('х');
+					srs1 = srs [srs.Length - 2].Split ('х');
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
 					max_avulsion_force = lenght * 80;
@@ -284,7 +288,7 @@ namespace Summer_work
 			writer1.Close ();
 			writer2.Close ();
 			writer3.Close ();
-		}
+		}*/
 
 		public static Stream GetStreamFromResource (string resName)
 		{
