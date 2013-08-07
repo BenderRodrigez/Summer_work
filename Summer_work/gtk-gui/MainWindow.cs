@@ -1516,6 +1516,7 @@ public partial class MainWindow
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
 		this.openAction1.Activated += new global::System.EventHandler (this.OnOpenAction1Activated);
 		this.saveAction1.Activated += new global::System.EventHandler (this.OnSaveAction1Activated);
+		this.button3.Clicked += new global::System.EventHandler (this.OnButton3Clicked);
 		this.combobox2.Changed += new global::System.EventHandler (this.OnCombobox2Changed);
 	}
 }

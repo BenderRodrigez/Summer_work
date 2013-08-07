@@ -70,4 +70,60 @@ public partial class MainWindow: Gtk.Window
 		}
 		fc.Destroy();
 	}
+
+	protected void OnButton3Clicked (object sender, EventArgs e)
+	{
+		bool params_OK = true;
+		float pressure = (float)force_spin.Value;
+		Materials material;
+		switch (objMaterial.ActiveText) {
+		case "Гипсокартон":
+			material = Materials.GKL;
+			break;
+		case "Дерево":
+			material = Materials.Tree;
+			break;
+		case "Металл":
+			material = Materials.Metal;
+			break;
+		default:
+			params_OK &= false;
+			break;
+		}
+		int fix_point = objMaterial.Active - 1;
+		float lenght = (float)objLenght.Value;
+		int fix_pointsN = (int)fixPointsN.Value;
+		Materials wall_material = Materials.Dowel;
+		switch (objMaterial.ActiveText) {
+		case "Гипсокартон":
+			wall_material = Materials.GKL;
+			break;
+		case "Дерево":
+			wall_material = Materials.Tree;
+			break;
+		case "Кирпич":
+			wall_material = Materials.Brick;
+			break;
+		case "Бетон":
+			wall_material = Materials.Concrete;
+			break;
+		case "Пеноблок":
+			wall_material = Materials.FoamBlock;
+			break;
+		default:
+			params_OK &= false;
+			break;
+		}
+		float wall_lenght = (float)wallLenght.Value;
+		if ((pressure > 0) && (fix_point > -2 && fix_point < 2) && (lenght > 0) && (fix_pointsN > -1) && (wall_lenght > -1)) {
+			params_OK |=true;
+			//подбираем
+			Storage.GenerateByMaterialList(wall_material);
+			Storage.GenerateByForce(fix_point, pressure);
+			Storage.GenerateByLenght(lenght+wall_lenght);
+		}
+		else
+			params_OK &=false;
+	}
+
 }
