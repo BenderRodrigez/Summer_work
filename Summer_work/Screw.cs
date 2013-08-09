@@ -112,6 +112,11 @@ namespace Summer_work
 			s += this.max_s.ToString();
 			return s;
 		}
+
+		public override string NameToString ()
+		{
+			return this.type.ToString();
+		}
 	}
 }
 

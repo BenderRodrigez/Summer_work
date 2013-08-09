@@ -107,6 +107,11 @@ namespace Summer_work
 				s += ';' + this.accepted_screw_d [i].ToString ();
 			return s;
 		}
+
+		public override string NameToString ()
+		{
+			return this.type.ToString();
+		}
 	}
 }
 

@@ -22,6 +22,7 @@ namespace Summer_work
 		public abstract bool CanPassByForce(int vector, float force);//-1 = floor, 0 = wall, 1 = roof
 		public abstract bool CanByMaterial(/*Materials what, */Materials wher);// 0 = what; 1 = where
 		public abstract string ToString ();
+		public abstract string NameToString();
 
         public Mount()
         {

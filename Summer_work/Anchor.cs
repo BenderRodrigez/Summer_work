@@ -119,5 +119,13 @@ namespace Summer_work
 			s += this.bolt_d.ToString ();
 			return s;
 		}
+
+		public override string NameToString ()
+		{
+			/*switch (this.type) {
+				case
+			}*/
+			return this.type.ToString();
+		}
 	}
 }

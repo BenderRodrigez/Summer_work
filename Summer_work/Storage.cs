@@ -8,13 +8,39 @@ using System.Text.RegularExpressions;
 
 namespace Summer_work
 {
-	public class Storage
+	public class Storage//Contains all methods needed to operate with data (in files, resurces and programm)
 	{
-		public static List<Mount> passed = new List<Mount>();
-		public static List<Anchor> anchorsDB = new List<Anchor>();
+		public static List<Mount> passed = new List<Mount>();//Result of choose
+		public static List<Anchor> anchorsDB = new List<Anchor>();//All known anchors, dowels,screws
 		public static List<Dowel> dowelsDB = new List<Dowel>();
 		public static List<Screw> screwDB = new List<Screw>();
 
+		private int passed_counter = 0;//navigation in passed DB in GUI...
+
+		public int GetCounter ()
+		{
+			return passed_counter;
+		}
+
+		public Mount GetNextPassed ()
+		{
+			if (passed_counter < passed.Count) {
+				passed_counter++;
+				return passed[this.passed_counter];
+			}
+			else
+				return passed[this.passed_counter];
+		}
+
+		public Mount GetPrevPassed ()
+		{
+			if (passed_counter > 0) {
+				passed_counter--;
+				return passed [this.passed_counter];
+			}
+			else
+				return passed[this.passed_counter];
+		}
 
 		/*public static void ConvertDB (string filename)
 		{

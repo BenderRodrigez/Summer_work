@@ -12,6 +12,9 @@ public partial class MainWindow: Gtk.Window
 		Build ();
 		//Storage.ConvertDB("База.txt");
 		//Use, to create DB... Don't tuch...
+		Storage.ReadDataResoursesAnchor();
+		Storage.ReadDataResoursesDowels();
+		Storage.ReadDataResoursesScrew();
 	}
 	
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
@@ -26,8 +29,8 @@ public partial class MainWindow: Gtk.Window
    		Stream _imageStream;
 		Stream _imageStream2;
 		_assembly = Assembly.GetExecutingAssembly();
-		_imageStream = _assembly.GetManifestResourceStream("Summer_work.Imgs.Graph.roof1sc.png");
-		_imageStream2 = _assembly.GetManifestResourceStream("Summer_work.Imgs.Graph.roof2sc.png");
+		_imageStream = Storage.GetStreamFromResource("Summer_work.Imgs.Graph.roof1sc.png");
+		_imageStream2 = Storage.GetStreamFromResource("Summer_work.Imgs.Graph.roof2sc.png");
 		switch (combobox2.ActiveText)
 		{
 		case "Односкатная": roofImg.Pixbuf = new Gdk.Pixbuf(_imageStream);
@@ -94,7 +97,7 @@ public partial class MainWindow: Gtk.Window
 		float lenght = (float)objLenght.Value;
 		int fix_pointsN = (int)fixPointsN.Value;
 		Materials wall_material = Materials.Dowel;
-		switch (objMaterial.ActiveText) {
+		switch (wallMaterial.ActiveText) {
 		case "Гипсокартон":
 			wall_material = Materials.GKL;
 			break;
@@ -121,6 +124,21 @@ public partial class MainWindow: Gtk.Window
 			Storage.GenerateByMaterialList(wall_material);
 			Storage.GenerateByForce(fix_point, pressure);
 			Storage.GenerateByLenght(lenght+wall_lenght);
+			if(Storage.passed.Count < 1){
+				//Error! Can't fix it by any material:(
+			}
+			else{
+				btnForward.Sensitive = true;
+				nameOfCurrentFix.Text += Storage.passed[0].NameToString();
+				imgFixPreview.Pixbuf = new Gdk.Pixbuf(Storage.GetStreamFromResource(Storage.passed[0].img_name));
+				spinD.Value = Storage.passed[0].d;
+				spinLenght.Value = Storage.passed[0].lenght;
+				spinAvForce.Value = Storage.passed[0].max_avulsion_force;
+				spinMaxCutForce.Value = Storage.passed[0].max_cut_force;
+				spinMaxA.Value = Storage.passed[0].max_a;
+				spinMaxS.Value = Storage.passed[0].max_s;
+				spinFixPoints.Value = fixPointsN.Value;
+			}
 		}
 		else
 			params_OK &=false;
