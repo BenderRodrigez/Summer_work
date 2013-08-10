@@ -13,6 +13,12 @@ namespace Summer_work
 		{
 			showed_message.LabelProp = message;
 		}
+
+		protected void OnButtonOkClicked (object sender, EventArgs e)
+		{
+			this.Destroy();
+		}
+
 	}
 }
 

@@ -122,10 +122,17 @@ namespace Summer_work
 
 		public override string NameToString ()
 		{
-			/*switch (this.type) {
-				case
-			}*/
-			return this.type.ToString();
+			switch (this.type) {
+			case AnchorType.Driven:
+				return "Забивной анкер";
+			case AnchorType.Frame:
+				return "Рамный анкер (дюбель)";
+			case AnchorType.Sleeve:
+				return "Анкерный болт с ш/г головой";
+			case AnchorType.Wedged:
+				return "Анкерный болт с гайкой";
+			}
+			return "error(Anchor)";
 		}
 	}
 }

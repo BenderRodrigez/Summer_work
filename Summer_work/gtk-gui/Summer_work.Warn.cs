@@ -47,9 +47,11 @@ namespace Summer_work
 			this.showed_message = new global::Gtk.Label ();
 			this.showed_message.Name = "showed_message";
 			this.showed_message.LabelProp = global::Mono.Unix.Catalog.GetString ("Произошла ошибка!");
+			this.showed_message.Wrap = true;
 			this.hbox1.Add (this.showed_message);
 			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.showed_message]));
 			w3.Position = 1;
+			w3.Fill = false;
 			w1.Add (this.hbox1);
 			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(w1 [this.hbox1]));
 			w4.Position = 0;
@@ -77,6 +79,7 @@ namespace Summer_work
 				this.Child.ShowAll ();
 			}
 			this.Show ();
+			this.buttonOk.Clicked += new global::System.EventHandler (this.OnButtonOkClicked);
 		}
 	}
 }

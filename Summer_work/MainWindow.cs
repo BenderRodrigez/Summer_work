@@ -25,19 +25,13 @@ public partial class MainWindow: Gtk.Window
 
 	protected void OnCombobox2Changed (object sender, EventArgs e)
 	{
-		System.Reflection.Assembly _assembly;//read a project resource files
-   		Stream _imageStream;
-		Stream _imageStream2;
-		_assembly = Assembly.GetExecutingAssembly();
-		_imageStream = Storage.GetStreamFromResource("Summer_work.Imgs.Graph.roof1sc.png");
-		_imageStream2 = Storage.GetStreamFromResource("Summer_work.Imgs.Graph.roof2sc.png");
 		switch (combobox2.ActiveText)
 		{
-		case "Односкатная": roofImg.Pixbuf = new Gdk.Pixbuf(_imageStream);
+		case "Односкатная": roofImg.Pixbuf = new Gdk.Pixbuf(Storage.GetStreamFromResource("Summer_work.Imgs.Graph.roof1sc.png"));
 			minh.Sensitive = true;
 			minh.Value = 0;
 			break;
-		case "Двухскатная": roofImg.Pixbuf = new Gdk.Pixbuf(_imageStream2);
+		case "Двухскатная": roofImg.Pixbuf = new Gdk.Pixbuf(Storage.GetStreamFromResource("Summer_work.Imgs.Graph.roof2sc.png"));
 			minh.Sensitive = false;
 			break;
 		}
@@ -119,29 +113,69 @@ public partial class MainWindow: Gtk.Window
 		}
 		float wall_lenght = (float)wallLenght.Value;
 		if ((pressure > 0) && (fix_point > -2 && fix_point < 2) && (lenght > 0) && (fix_pointsN > -1) && (wall_lenght > -1)) {
-			params_OK |=true;
+			params_OK |= true;
 			//подбираем
-			Storage.GenerateByMaterialList(wall_material);
-			Storage.GenerateByForce(fix_point, pressure);
-			Storage.GenerateByLenght(lenght+wall_lenght);
-			if(Storage.passed.Count < 1){
+			Storage.GenerateByMaterialList (wall_material);
+			Storage.GenerateByForce (fix_point, pressure);
+			Storage.GenerateByLenght (lenght + wall_lenght);
+			if (Storage.passed.Count < 1) {
 				//Error! Can't fix it by any material:(
-			}
-			else{
+				Warn wrn = new Warn ();
+				wrn.SetLabel ("Мы не нашли подходящего крепежа в нашей базе!");
+				wrn.Modal = true;
+				wrn.Show ();
+			} else {
+				GtkLabel4.Text = Storage.passed.Count.ToString ();
 				btnForward.Sensitive = true;
-				nameOfCurrentFix.Text += Storage.passed[0].NameToString();
-				imgFixPreview.Pixbuf = new Gdk.Pixbuf(Storage.GetStreamFromResource(Storage.passed[0].img_name));
-				spinD.Value = Storage.passed[0].d;
-				spinLenght.Value = Storage.passed[0].lenght;
-				spinAvForce.Value = Storage.passed[0].max_avulsion_force;
-				spinMaxCutForce.Value = Storage.passed[0].max_cut_force;
-				spinMaxA.Value = Storage.passed[0].max_a;
-				spinMaxS.Value = Storage.passed[0].max_s;
+				nameOfCurrentFix.Text += Storage.passed [0].NameToString ();
+				imgFixPreview.Pixbuf = new Gdk.Pixbuf (Storage.GetStreamFromResource (Storage.passed [0].img_name));
+				spinD.Value = Storage.passed [0].d;
+				spinLenght.Value = Storage.passed [0].lenght;
+				spinAvForce.Value = Storage.passed [0].max_avulsion_force;
+				spinMaxCutForce.Value = Storage.passed [0].max_cut_force;
+				spinMaxA.Value = Storage.passed [0].max_a;
+				spinMaxS.Value = Storage.passed [0].max_s;
 				spinFixPoints.Value = fixPointsN.Value;
 			}
+		} else {
+			Warn wrn = new Warn();
+			wrn.SetLabel("Что-то не так с параметрами крепежа! Проверьте данные, которые ввели. Если это не помогло, свяжитесь с разработчиком!");
+			wrn.Modal = true;
+			wrn.Show();
+			params_OK &= false;
 		}
-		else
-			params_OK &=false;
+	}
+
+	protected void OnBtnForwardClicked (object sender, EventArgs e)
+	{
+		if(Storage.passed.Count != 1)
+			btnBack.Sensitive = true;
+		Mount mnt = Storage.GetNextPassed();
+		nameOfCurrentFix.Text = "Название: "+mnt.NameToString();
+		imgFixPreview.Pixbuf = new Gdk.Pixbuf(Storage.GetStreamFromResource(mnt.img_name));
+		spinD.Value = mnt.d;
+		spinLenght.Value = mnt.lenght;
+		spinAvForce.Value = mnt.max_avulsion_force;
+		spinMaxCutForce.Value = mnt.max_cut_force;
+		spinMaxA.Value = mnt.max_a;
+		spinMaxS.Value = mnt.max_s;
+		spinFixPoints.Value = fixPointsN.Value;
+	}
+
+	protected void OnBtnBackClicked (object sender, EventArgs e)
+	{
+		if(Storage.passed.Count != 1)
+			btnBack.Sensitive = true;
+		Mount mnt = Storage.GetPrevPassed();
+		nameOfCurrentFix.Text = "Название: "+mnt.NameToString();
+		imgFixPreview.Pixbuf = new Gdk.Pixbuf(Storage.GetStreamFromResource(mnt.img_name));
+		spinD.Value = mnt.d;
+		spinLenght.Value = mnt.lenght;
+		spinAvForce.Value = mnt.max_avulsion_force;
+		spinMaxCutForce.Value = mnt.max_cut_force;
+		spinMaxA.Value = mnt.max_a;
+		spinMaxS.Value = mnt.max_s;
+		spinFixPoints.Value = fixPointsN.Value;
 	}
 
 }

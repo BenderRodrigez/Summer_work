@@ -519,6 +519,7 @@
                                     <property name="UseStock">True</property>
                                     <property name="Type">StockItem</property>
                                     <property name="StockId">gtk-go-back</property>
+                                    <signal name="Clicked" handler="OnBtnBackClicked" />
                                     <property name="label">gtk-go-back</property>
                                   </widget>
                                   <packing>
@@ -548,6 +549,7 @@
                                     <property name="UseStock">True</property>
                                     <property name="Type">StockItem</property>
                                     <property name="StockId">gtk-go-forward</property>
+                                    <signal name="Clicked" handler="OnBtnForwardClicked" />
                                     <property name="label">gtk-go-forward</property>
                                   </widget>
                                   <packing>
@@ -729,7 +731,7 @@
                                     <property name="MemberName" />
                                     <property name="Sensitive">False</property>
                                     <property name="CanFocus">True</property>
-                                    <property name="Upper">100</property>
+                                    <property name="Upper">1000000</property>
                                     <property name="PageIncrement">10</property>
                                     <property name="StepIncrement">1</property>
                                     <property name="ClimbRate">1</property>
@@ -756,7 +758,7 @@
                                     <property name="MemberName" />
                                     <property name="Sensitive">False</property>
                                     <property name="CanFocus">True</property>
-                                    <property name="Upper">100</property>
+                                    <property name="Upper">100000</property>
                                     <property name="PageIncrement">10</property>
                                     <property name="StepIncrement">1</property>
                                     <property name="ClimbRate">1</property>
@@ -807,7 +809,7 @@
                                     <property name="MemberName" />
                                     <property name="Sensitive">False</property>
                                     <property name="CanFocus">True</property>
-                                    <property name="Upper">100</property>
+                                    <property name="Upper">10000000</property>
                                     <property name="PageIncrement">10</property>
                                     <property name="StepIncrement">1</property>
                                     <property name="ClimbRate">1</property>
@@ -834,7 +836,7 @@
                                     <property name="MemberName" />
                                     <property name="Sensitive">False</property>
                                     <property name="CanFocus">True</property>
-                                    <property name="Upper">100</property>
+                                    <property name="Upper">1000000</property>
                                     <property name="PageIncrement">10</property>
                                     <property name="StepIncrement">1</property>
                                     <property name="ClimbRate">1</property>
@@ -861,7 +863,7 @@
                                     <property name="MemberName" />
                                     <property name="Sensitive">False</property>
                                     <property name="CanFocus">True</property>
-                                    <property name="Upper">100</property>
+                                    <property name="Upper">10000000</property>
                                     <property name="PageIncrement">10</property>
                                     <property name="StepIncrement">1</property>
                                     <property name="ClimbRate">1</property>
@@ -888,7 +890,7 @@
                                     <property name="MemberName" />
                                     <property name="Sensitive">False</property>
                                     <property name="CanFocus">True</property>
-                                    <property name="Upper">100</property>
+                                    <property name="Upper">100000</property>
                                     <property name="PageIncrement">10</property>
                                     <property name="StepIncrement">1</property>
                                     <property name="ClimbRate">1</property>
@@ -2378,10 +2380,12 @@
               <widget class="Gtk.Label" id="showed_message">
                 <property name="MemberName" />
                 <property name="LabelProp" translatable="yes">Произошла ошибка!</property>
+                <property name="Wrap">True</property>
               </widget>
               <packing>
                 <property name="Position">1</property>
                 <property name="AutoSize">False</property>
+                <property name="Fill">False</property>
               </packing>
             </child>
           </widget>
@@ -2410,6 +2414,7 @@
             <property name="Type">StockItem</property>
             <property name="StockId">gtk-ok</property>
             <property name="ResponseId">-5</property>
+            <signal name="Clicked" handler="OnButtonOkClicked" />
             <property name="label">gtk-ok</property>
           </widget>
           <packing>

@@ -15,31 +15,31 @@ namespace Summer_work
 		public static List<Dowel> dowelsDB = new List<Dowel>();
 		public static List<Screw> screwDB = new List<Screw>();
 
-		private int passed_counter = 0;//navigation in passed DB in GUI...
+		private static int passed_counter = 0;//navigation in passed DB in GUI...
 
 		public int GetCounter ()
 		{
 			return passed_counter;
 		}
 
-		public Mount GetNextPassed ()
+		public static Mount GetNextPassed ()
 		{
-			if (passed_counter < passed.Count) {
+			if (passed_counter < (passed.Count-1)) {
 				passed_counter++;
-				return passed[this.passed_counter];
+				return passed[passed_counter];
 			}
 			else
-				return passed[this.passed_counter];
+				return passed[passed_counter];
 		}
 
-		public Mount GetPrevPassed ()
+		public static Mount GetPrevPassed ()
 		{
 			if (passed_counter > 0) {
 				passed_counter--;
-				return passed [this.passed_counter];
+				return passed [passed_counter];
 			}
 			else
-				return passed[this.passed_counter];
+				return passed[passed_counter];
 		}
 
 		/*public static void ConvertDB (string filename)

@@ -55,6 +55,9 @@ namespace Summer_work
 			case ScrewType.Uni:
 				this.img_name = "Summer_work.Imgs.Screws.uni.png";
 				break;
+			case ScrewType.Concerete:
+				this.img_name = "Summer_work.Imgs.Screws.concrete.png";
+				break;
 			}
 		}
 
@@ -115,7 +118,25 @@ namespace Summer_work
 
 		public override string NameToString ()
 		{
-			return this.type.ToString();
+			switch (this.type) {
+			case ScrewType.Capercaillie:
+				return "Глухарь";
+			case ScrewType.Concerete:
+				return "Саморез по бетону";
+			case ScrewType.Metal:
+				return "Саморез с частой резьбой";
+			case ScrewType.PO:
+				return "Саморез с прессшайбой острый";
+			case ScrewType.PS:
+				return "Саморез с перссшайбой со сверлом";
+			case ScrewType.Roof:
+				return "Кровельный саморез";
+			case ScrewType.Tree:
+				return "Саморез с крупнлой резьбой";
+			case ScrewType.Uni:
+				return "Универсальный шуруп";
+			}
+			return "error(Anchor)";
 		}
 	}
 }

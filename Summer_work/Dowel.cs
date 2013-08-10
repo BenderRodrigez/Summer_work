@@ -110,7 +110,15 @@ namespace Summer_work
 
 		public override string NameToString ()
 		{
-			return this.type.ToString();
+			switch (this.type) {
+			case DowelType.Butterfly:
+				return "Дюбель \"бабочка\"";
+			case DowelType.Nail:
+				return "Дюбель-гвоздь";
+			case DowelType.Standart:
+				return "Дюбель";
+			}
+			return "error(Anchor)";
 		}
 	}
 }

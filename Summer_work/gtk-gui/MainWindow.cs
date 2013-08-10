@@ -568,7 +568,7 @@ public partial class MainWindow
 		w34.XOptions = ((global::Gtk.AttachOptions)(4));
 		w34.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table6.Gtk.Table+TableChild
-		this.spinAvForce = new global::Gtk.SpinButton (0, 100, 1);
+		this.spinAvForce = new global::Gtk.SpinButton (0, 1000000, 1);
 		this.spinAvForce.Sensitive = false;
 		this.spinAvForce.CanFocus = true;
 		this.spinAvForce.Name = "spinAvForce";
@@ -584,7 +584,7 @@ public partial class MainWindow
 		w35.XOptions = ((global::Gtk.AttachOptions)(4));
 		w35.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table6.Gtk.Table+TableChild
-		this.spinD = new global::Gtk.SpinButton (0, 100, 1);
+		this.spinD = new global::Gtk.SpinButton (0, 100000, 1);
 		this.spinD.Sensitive = false;
 		this.spinD.CanFocus = true;
 		this.spinD.Name = "spinD";
@@ -613,7 +613,7 @@ public partial class MainWindow
 		w37.XOptions = ((global::Gtk.AttachOptions)(4));
 		w37.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table6.Gtk.Table+TableChild
-		this.spinLenght = new global::Gtk.SpinButton (0, 100, 1);
+		this.spinLenght = new global::Gtk.SpinButton (0, 10000000, 1);
 		this.spinLenght.Sensitive = false;
 		this.spinLenght.CanFocus = true;
 		this.spinLenght.Name = "spinLenght";
@@ -629,7 +629,7 @@ public partial class MainWindow
 		w38.XOptions = ((global::Gtk.AttachOptions)(4));
 		w38.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table6.Gtk.Table+TableChild
-		this.spinMaxA = new global::Gtk.SpinButton (0, 100, 1);
+		this.spinMaxA = new global::Gtk.SpinButton (0, 1000000, 1);
 		this.spinMaxA.Sensitive = false;
 		this.spinMaxA.CanFocus = true;
 		this.spinMaxA.Name = "spinMaxA";
@@ -645,7 +645,7 @@ public partial class MainWindow
 		w39.XOptions = ((global::Gtk.AttachOptions)(4));
 		w39.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table6.Gtk.Table+TableChild
-		this.spinMaxCutForce = new global::Gtk.SpinButton (0, 100, 1);
+		this.spinMaxCutForce = new global::Gtk.SpinButton (0, 10000000, 1);
 		this.spinMaxCutForce.Sensitive = false;
 		this.spinMaxCutForce.CanFocus = true;
 		this.spinMaxCutForce.Name = "spinMaxCutForce";
@@ -661,7 +661,7 @@ public partial class MainWindow
 		w40.XOptions = ((global::Gtk.AttachOptions)(4));
 		w40.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table6.Gtk.Table+TableChild
-		this.spinMaxS = new global::Gtk.SpinButton (0, 100, 1);
+		this.spinMaxS = new global::Gtk.SpinButton (0, 100000, 1);
 		this.spinMaxS.Sensitive = false;
 		this.spinMaxS.CanFocus = true;
 		this.spinMaxS.Name = "spinMaxS";
@@ -1519,6 +1519,8 @@ public partial class MainWindow
 		this.openAction1.Activated += new global::System.EventHandler (this.OnOpenAction1Activated);
 		this.saveAction1.Activated += new global::System.EventHandler (this.OnSaveAction1Activated);
 		this.button3.Clicked += new global::System.EventHandler (this.OnButton3Clicked);
+		this.btnBack.Clicked += new global::System.EventHandler (this.OnBtnBackClicked);
+		this.btnForward.Clicked += new global::System.EventHandler (this.OnBtnForwardClicked);
 		this.combobox2.Changed += new global::System.EventHandler (this.OnCombobox2Changed);
 	}
 }
