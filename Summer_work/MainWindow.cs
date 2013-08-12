@@ -4,9 +4,13 @@ using System.Resources;
 using System.IO;
 using System.Reflection;
 using Summer_work;
+using System.Timers;
 
 public partial class MainWindow: Gtk.Window
 {	
+
+	Timer timer = new Timer (60000);
+
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
@@ -15,6 +19,12 @@ public partial class MainWindow: Gtk.Window
 		Storage.ReadDataResoursesAnchor();
 		Storage.ReadDataResoursesDowels();
 		Storage.ReadDataResoursesScrew();
+		timer.Elapsed += new ElapsedEventHandler(Tick);
+	}
+
+	public static void Tick (object source, ElapsedEventArgs e)
+	{
+
 	}
 	
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
@@ -71,8 +81,8 @@ public partial class MainWindow: Gtk.Window
 	protected void OnButton3Clicked (object sender, EventArgs e)
 	{
 		bool params_OK = true;
-		float pressure = (float)force_spin.Value;
-		Materials material;
+		float pressure = (float)force_spin.Value*10;
+		Materials material = Materials.None;
 		switch (objMaterial.ActiveText) {
 		case "Гипсокартон":
 			material = Materials.GKL;
@@ -90,7 +100,8 @@ public partial class MainWindow: Gtk.Window
 		int fix_point = objMaterial.Active - 1;
 		float lenght = (float)objLenght.Value;
 		int fix_pointsN = (int)fixPointsN.Value;
-		Materials wall_material = Materials.Dowel;
+		pressure /= fix_pointsN;
+		Materials wall_material = Materials.None;
 		switch (wallMaterial.ActiveText) {
 		case "Гипсокартон":
 			wall_material = Materials.GKL;
@@ -115,9 +126,10 @@ public partial class MainWindow: Gtk.Window
 		if ((pressure > 0) && (fix_point > -2 && fix_point < 2) && (lenght > 0) && (fix_pointsN > -1) && (wall_lenght > -1)) {
 			params_OK |= true;
 			//подбираем
-			Storage.GenerateByMaterialList (wall_material);
-			Storage.GenerateByForce (fix_point, pressure);
-			Storage.GenerateByLenght (lenght + wall_lenght);
+			Storage.passed.Clear();
+			Calculator.GenerateByMaterialList (material, wall_material);
+			Calculator.GenerateByForce (fix_point, pressure);
+			Calculator.GenerateByLenght (wall_lenght, lenght);
 			if (Storage.passed.Count < 1) {
 				//Error! Can't fix it by any material:(
 				Warn wrn = new Warn ();
@@ -148,11 +160,11 @@ public partial class MainWindow: Gtk.Window
 
 	protected void OnBtnForwardClicked (object sender, EventArgs e)
 	{
-		if(Storage.passed.Count != 1)
+		if (Storage.passed.Count != 1)
 			btnBack.Sensitive = true;
-		Mount mnt = Storage.GetNextPassed();
-		nameOfCurrentFix.Text = "Название: "+mnt.NameToString();
-		imgFixPreview.Pixbuf = new Gdk.Pixbuf(Storage.GetStreamFromResource(mnt.img_name));
+		Mount mnt = Storage.GetNextPassed ();
+		nameOfCurrentFix.Text = "Название: " + mnt.NameToString ();
+		imgFixPreview.Pixbuf = new Gdk.Pixbuf (Storage.GetStreamFromResource (mnt.img_name));
 		spinD.Value = mnt.d;
 		spinLenght.Value = mnt.lenght;
 		spinAvForce.Value = mnt.max_avulsion_force;
@@ -160,6 +172,9 @@ public partial class MainWindow: Gtk.Window
 		spinMaxA.Value = mnt.max_a;
 		spinMaxS.Value = mnt.max_s;
 		spinFixPoints.Value = fixPointsN.Value;
+		if (mnt.is_doweled) {
+			timer.Enabled = true;
+		}
 	}
 
 	protected void OnBtnBackClicked (object sender, EventArgs e)

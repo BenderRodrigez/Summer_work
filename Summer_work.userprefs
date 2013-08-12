@@ -1,14 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Summer_work/Storage.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Summer_work/MainWindow.cs">
     <Files>
-      <File FileName="Summer_work/Storage.cs" Line="9" Column="22" />
-      <File FileName="Summer_work/MainWindow.cs" Line="128" Column="42" />
-      <File FileName="Summer_work/Anchor.cs" Line="101" Column="4" />
-      <File FileName="Summer_work/Dowel.cs" Line="113" Column="32" />
-      <File FileName="Summer_work/Screw.cs" Line="118" Column="32" />
-      <File FileName="Summer_work/Main.cs" Line="16" Column="4" />
-      <File FileName="Summer_work/Mount.cs" Line="25" Column="41" />
+      <File FileName="Summer_work/Main.cs" Line="18" Column="3" />
+      <File FileName="Summer_work/Warn.cs" Line="19" Column="19" />
+      <File FileName="Summer_work/Mount.cs" Line="12" Column="34" />
+      <File FileName="Summer_work/MainWindow.cs" Line="27" Column="3" />
+      <File FileName="Summer_work/Anchor.cs" Line="74" Column="99" />
+      <File FileName="Summer_work/Dowel.cs" Line="71" Column="28" />
+      <File FileName="Summer_work/Screw.cs" Line="13" Column="25" />
+      <File FileName="Summer_work/Calculator.cs" Line="97" Column="1" />
+      <File FileName="Summer_work/Storage.cs" Line="551" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -18,5 +20,6 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="Summer_work/Storage.cs" line="381" offsetX="566" offsetY="1836" expression="passed" liveUpdate="False" />
+    <Watch file="Summer_work/Anchor.cs" line="92" offsetX="838" offsetY="1547" expression="this.accepted_material" liveUpdate="False" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
 </Properties>

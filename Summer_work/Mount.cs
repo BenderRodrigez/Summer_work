@@ -9,6 +9,7 @@ namespace Summer_work
 		public float max_cut_force;
 		public bool is_selfdrill;
 		public bool is_throughwall;
+		public bool is_doweled = false;
 		public float d;
 		public float lenght;
 		public Materials[] accepted_material;
@@ -18,9 +19,9 @@ namespace Summer_work
 
 		public const float infinity = 99999;
 
-		public abstract bool CanPassByLenght(float totalLenght);
+		public abstract bool CanPassByLenght(float wallLenght, float objLenght);
 		public abstract bool CanPassByForce(int vector, float force);//-1 = floor, 0 = wall, 1 = roof
-		public abstract bool CanByMaterial(/*Materials what, */Materials wher);// 0 = what; 1 = where
+		public abstract bool CanByMaterial(Materials what, Materials wher);// 0 = what; 1 = where
 		public abstract string ToString ();
 		public abstract string NameToString();
 

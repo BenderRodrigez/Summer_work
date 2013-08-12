@@ -10,9 +10,9 @@ namespace Summer_work
 {
 	public class Dowel : Mount
 	{
-		DowelType type;
-		float[] accepted_screw_d;
-		Screw screw;//нужен ли он здесь?
+		public DowelType type;
+		public float[] accepted_screw_d;
+		//Screw screw;//нужен ли он здесь?
 		public Dowel (DowelType type,
 		              float max_avulsion_force,
 		              float max_cut_force,
@@ -58,28 +58,23 @@ namespace Summer_work
 
 		public override bool CanPassByForce (int vector, float force)
 		{
-			if(this.screw != null)
-				return (this.max_avulsion_force*vector < force)&&(this.screw.CanPassByForce(vector,force));
+			return (this.max_avulsion_force*(vector+1) > force);//+1 - to crrect calcs and make it compact
+		}
+
+		public override bool CanByMaterial (Materials what, Materials wher)
+		{
+			return Array.IndexOf(this.accepted_material, wher)>-1;
+		}
+
+		public override bool CanPassByLenght (float wallLenght, float objLenght)
+		{
+			if(!this.is_throughwall)
+				if(this.type != DowelType.Nail)
+					return this.lenght < wallLenght;
+				else
+					return (this.lenght - objLenght < wallLenght) && (this.lenght - objLenght > this.lenght * 0.5);
 			else
-				return (this.max_avulsion_force*vector < force);
-		}
-
-		public override bool CanByMaterial (/*Materials what, */Materials wher)
-		{
-			//bool answer = false;
-			bool answer1 = false;
-//			for(int i = 0; i < this.accepted_material.Length; i++)
-//				if(accepted_material[i] == what)
-//					answer |= true;
-			for(int i = 0; i < this.accepted_material.Length; i++)
-				if(accepted_material[i] == wher)
-					answer1 |= true;
-			return /*answer && */answer1;
-		}
-
-		public override bool CanPassByLenght (float totalLenght)
-		{
-			return (this.lenght < totalLenght);
+				return this.lenght -objLenght > wallLenght*1.5;
 		}
 
 		public override string ToString ()

@@ -2,6 +2,7 @@ using System;
 using Gtk;
 using Summer_work;
 using System.Collections.Generic;
+using System.Timers;
 
 namespace Summer_work
 {
@@ -18,7 +19,7 @@ namespace Summer_work
 
 	public enum Materials
 	{
-		GKL, Tree, Metal, Brick, Concrete, FoamBlock, Dowel
+		GKL, Tree, Metal, Brick, Concrete, FoamBlock, Dowel, None = -1
 	}
 
 	public enum AnchorType

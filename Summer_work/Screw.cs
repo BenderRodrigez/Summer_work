@@ -11,6 +11,7 @@ namespace Summer_work
 	public class Screw : Mount
 	{
 		public ScrewType type;
+		public Dowel dwl;
 
 		public Screw (ScrewType type,
 		              float max_avulsion_force,
@@ -61,9 +62,12 @@ namespace Summer_work
 			}
 		}
 
-		public override bool CanPassByLenght (float totalLenght)
+		public override bool CanPassByLenght (float wallLenght, float objLenght)
 		{
-			return (this.lenght < totalLenght*0.8);
+			if(!this.is_doweled)
+				return (this.lenght - objLenght < wallLenght) && (this.lenght - objLenght > this.lenght * 0.2);
+			else
+				return this.dwl.CanPassByLenght(wallLenght, objLenght) && (this.lenght - objLenght > this.lenght * 0.4);
 		}
 
 		public override bool CanPassByForce (int vector, float force)
@@ -74,23 +78,30 @@ namespace Summer_work
 			case 0:
 				return force < max_cut_force;
 			case 1:
+				if(this.is_doweled)
+					return (this.max_avulsion_force > force) && (this.dwl.CanPassByForce(vector, force));
 				return force < max_avulsion_force;
 			}
 
 			return false;
 		}
 
-		public override bool CanByMaterial (/*Materials what, */Materials wher)
+		public override bool CanByMaterial (Materials what, Materials wher)
 		{
-			//bool answer = false;
-			bool answer1 = false;
-//			for(int i = 0; i < this.accepted_material.Length; i++)
-//				if(accepted_material[i] == what)
-//					answer |= true;
-			for(int i = 0; i < this.accepted_material.Length; i++)
-				if(accepted_material[i] == wher)
-					answer1 |= true;
-			return /*answer && */answer1;
+			//if Dowel || (what && wher)
+			if((Array.IndexOf(this.accepted_material, wher)>-1) && (Array.IndexOf(this.accepted_material, what)>-1))
+					return true;
+			else{
+				if((Array.IndexOf(this.accepted_material, Materials.Dowel)>-1) && (Array.IndexOf(this.accepted_material, what)>-1)){
+					Dowel dw = Calculator.DowelToScrew(this, what, wher);
+					if(dw != null){
+						this.dwl = dw;
+					this.is_doweled = dw != null;
+					}
+					return this.is_doweled;
+				}
+			}
+			return false;
 		}
 
 		public override string ToString ()

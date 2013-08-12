@@ -68,9 +68,13 @@ namespace Summer_work
 			}
 		}
 
-		public override bool CanPassByLenght (float totalLenght)
+		public override bool CanPassByLenght (float wallLenght, float objLenght)
 		{
-			return (this.lenght < totalLenght);
+			if (!this.is_throughwall) {
+				return (this.lenght - objLenght < wallLenght) && (this.lenght - objLenght > this.lenght * 0.35);
+			} else {
+				return this.lenght -objLenght > wallLenght*1.5;
+			}
 		}
 
 		public override bool CanPassByForce (int vector, float force)
@@ -87,17 +91,9 @@ namespace Summer_work
 			return false;
 		}
 
-		public override bool CanByMaterial (/*Materials what, */Materials wher)
+		public override bool CanByMaterial (Materials what, Materials wher)
 		{
-			//bool answer = false;
-			bool answer1 = false;
-//			for(int i = 0; i < this.accepted_material.Length; i++)
-//				if(accepted_material[i] == what)
-//					answer |= true;
-			for(int i = 0; i < this.accepted_material.Length; i++)
-				if(accepted_material[i] == wher)
-					answer1 |= true;
-			return /*answer && */answer1;
+			return (what != Materials.GKL) && (Array.IndexOf(this.accepted_material, wher)>-1);
 		}
 
 		public override string ToString ()
