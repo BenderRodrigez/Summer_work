@@ -24,7 +24,7 @@ public partial class MainWindow: Gtk.Window
 
 	public static void Tick (object source, ElapsedEventArgs e)
 	{
-
+		//here we change picture to dowel or screw, then we fix it in to the wall like one position
 	}
 	
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
@@ -192,5 +192,29 @@ public partial class MainWindow: Gtk.Window
 		spinMaxS.Value = mnt.max_s;
 		spinFixPoints.Value = fixPointsN.Value;
 	}
+
+	protected void OnButton65Clicked (object sender, EventArgs e)
+	{
+		Calculator.initConcrete ();//init prportions
+		float volume = Calculator.foundamentVolume ((float)(hight.Value + deep.Value), (float)build_lenght.Value, (float)found_flat.Value, (float)addit_P.Value, (float)build_weight.Value);//total volume
+		beton_vol.Value = volume;
+		Calculator.Concrete mark = new Calculator.Concrete ();
+		if (Calculator.Concrete.TryParse (beton.ActiveText, out mark)) {
+			float[] mats = new float[3];
+			mats = Calculator.concreteMaterials (volume, mark);//weight of components
+			concentre.Value = mats[0]/1000;
+			gravel.Value = mats[1]/1000;
+			sand.Value = mats[2]/1000;
+		}
+		else
+		{
+			Warn wrn = new Warn();
+			wrn.SetLabel("Проверьте, выбрали ли вы марку бетона! Если ошибка сохранится, свяжитесь с разработчиком!");
+			wrn.Modal = true;
+			wrn.Show();
+		}
+		arm.Value = Calculator.armsTotalLenght(volume);//just lenght of "arms"
+	}
+
 
 }
