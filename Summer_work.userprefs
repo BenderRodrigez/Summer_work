@@ -5,11 +5,11 @@
       <File FileName="Summer_work/Main.cs" Line="22" Column="36" />
       <File FileName="Summer_work/Warn.cs" Line="19" Column="19" />
       <File FileName="Summer_work/Mount.cs" Line="12" Column="34" />
-      <File FileName="Summer_work/MainWindow.cs" Line="27" Column="94" />
+      <File FileName="Summer_work/MainWindow.cs" Line="216" Column="14" />
       <File FileName="Summer_work/Anchor.cs" Line="74" Column="99" />
       <File FileName="Summer_work/Dowel.cs" Line="71" Column="28" />
       <File FileName="Summer_work/Screw.cs" Line="13" Column="25" />
-      <File FileName="Summer_work/Calculator.cs" Line="26" Column="39" />
+      <File FileName="Summer_work/Calculator.cs" Line="36" Column="65" />
       <File FileName="Summer_work/Storage.cs" Line="551" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>

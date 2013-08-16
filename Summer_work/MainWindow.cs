@@ -81,7 +81,7 @@ public partial class MainWindow: Gtk.Window
 	protected void OnButton3Clicked (object sender, EventArgs e)
 	{
 		bool params_OK = true;
-		float pressure = (float)force_spin.Value*10;
+		float pressure = (float)force_spin.Value*9.8f;
 		Materials material = Materials.None;
 		switch (objMaterial.ActiveText) {
 		case "Гипсокартон":
@@ -213,7 +213,8 @@ public partial class MainWindow: Gtk.Window
 			wrn.Modal = true;
 			wrn.Show();
 		}
-		arm.Value = Calculator.armsTotalLenght(volume);//just lenght of "arms"
+		arm.Value = Calculator.armsTotalLenght((float)(build_lenght.Value+addit_P.Value+build_weight.Value), (float)(hight.Value + deep.Value), (float)found_flat.Value);//just lenght of "arms"
+		tube.Value = Calculator.formwork((float)(hight.Value + deep.Value), (float)(build_lenght.Value), (float)(build_weight.Value), (float)found_flat.Value, (float)addit_P.Value);
 	}
 
 

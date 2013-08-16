@@ -42,7 +42,7 @@ namespace Summer_work
 				return passed[passed_counter];
 		}
 
-		/*public static void ConvertDB (string filename)
+		public static void ConvertDB (string filename)
 		{
 			StreamReader reader = new StreamReader (filename);
 			//Stream writer1 = GetStreamFromResource ("Summer_work.Data.Anchors.dat");
@@ -78,7 +78,7 @@ namespace Summer_work
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
 					max_avulsion_force = lenght * 80;
-					max_cut_force = d * 5 * 100;
+					max_cut_force = 400*Math.PI*Math.Pow(d/2, 2);//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
 					is_selfdrill = false;
 					is_throughwall = false;
 					max_a = lenght * (float)1.5;
@@ -92,7 +92,7 @@ namespace Summer_work
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
 					max_avulsion_force = lenght * 80;
-					max_cut_force = d * 5 * 100;
+					max_cut_force = 400*Math.PI*Math.Pow(d/2, 2);
 					is_selfdrill = false;
 					is_throughwall = false;
 					max_a = lenght * (float)1.5;
@@ -106,7 +106,7 @@ namespace Summer_work
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
 					max_avulsion_force = lenght * 80;
-					max_cut_force = d * 5 * 100;
+					max_cut_force = 400*Math.PI*Math.Pow(d/2, 2);
 					is_selfdrill = false;
 					is_throughwall = false;
 					max_a = lenght * (float)1.5;
@@ -123,7 +123,7 @@ namespace Summer_work
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
 					max_avulsion_force = lenght * 80;
-					max_cut_force = d * 5 * 100;
+					max_cut_force = 400*Math.PI*Math.Pow(d/2, 2);
 					is_selfdrill = false;
 					is_throughwall = false;
 					max_a = lenght * (float)1.5;
@@ -191,7 +191,7 @@ namespace Summer_work
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
 					max_avulsion_force = lenght * 80;
-					max_cut_force = d * 5 * 100;
+					max_cut_force = 400*Math.PI*Math.Pow(d/2, 2);
 					is_selfdrill = false;
 					is_throughwall = false;
 					max_a = lenght * (float)1.5;
@@ -205,7 +205,7 @@ namespace Summer_work
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
 					max_avulsion_force = lenght * 80;
-					max_cut_force = d * 5 * 100;
+					max_cut_force = 400*Math.PI*Math.Pow(d/2, 2);
 					is_selfdrill = false;
 					is_throughwall = false;
 					max_a = lenght * (float)1.5;
@@ -219,7 +219,7 @@ namespace Summer_work
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
 					max_avulsion_force = lenght * 80;
-					max_cut_force = d * 5 * 100;
+					max_cut_force = 400*Math.PI*Math.Pow(d/2, 2);
 					is_selfdrill = false;
 					is_throughwall = false;
 					max_a = lenght * (float)1.5;
@@ -236,7 +236,7 @@ namespace Summer_work
 						d = float.Parse (srs1 [0]);
 						lenght = float.Parse (srs1 [1]);
 						max_avulsion_force = lenght * 80;
-						max_cut_force = d * 5 * 100;
+						max_cut_force = 400*Math.PI*Math.Pow(d/2, 2);
 						is_selfdrill = false;
 						is_throughwall = false;
 						max_a = lenght * (float)1.5;
@@ -250,7 +250,7 @@ namespace Summer_work
 						d = float.Parse (srs1 [0]);
 						lenght = float.Parse (srs1 [1]);
 						max_avulsion_force = lenght * 80;
-						max_cut_force = d * 5 * 100;
+						max_cut_force = 400*Math.PI*Math.Pow(d/2, 2);
 						is_selfdrill = true;
 						is_throughwall = false;
 						max_a = lenght * (float)1.5;
@@ -266,7 +266,7 @@ namespace Summer_work
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
 					max_avulsion_force = lenght * 80;
-					max_cut_force = d * 5 * 100;
+					max_cut_force = 400*Math.PI*Math.Pow(d/2, 2);
 					is_selfdrill = false;
 					is_throughwall = false;
 					max_a = lenght * (float)1.5;
@@ -280,7 +280,7 @@ namespace Summer_work
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
 					max_avulsion_force = lenght * 80;
-					max_cut_force = d * 5 * 100;
+					max_cut_force = 400*Math.PI*Math.Pow(d/2, 2);
 					is_selfdrill = true;
 					is_throughwall = false;
 					max_a = lenght * (float)1.5;
@@ -294,7 +294,7 @@ namespace Summer_work
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
 					max_avulsion_force = lenght * 80;
-					max_cut_force = d * 5 * 100;
+					max_cut_force = 400*Math.PI*Math.Pow(d/2, 2);
 					is_selfdrill = false;
 					is_throughwall = false;
 					max_a = lenght * (float)1.5;
@@ -314,7 +314,7 @@ namespace Summer_work
 			writer1.Close ();
 			writer2.Close ();
 			writer3.Close ();
-		}*/
+		}
 
 		public static Stream GetStreamFromResource (string resName)
 		{

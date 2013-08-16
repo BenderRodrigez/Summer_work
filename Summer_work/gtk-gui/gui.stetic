@@ -57,7 +57,7 @@
           <widget class="Gtk.Notebook" id="notebook1">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
-            <property name="CurrentPage">1</property>
+            <property name="CurrentPage">0</property>
             <child>
               <widget class="Gtk.HBox" id="hbox1">
                 <property name="MemberName" />
@@ -1395,6 +1395,7 @@ M500</property>
                                 <property name="PageIncrement">10</property>
                                 <property name="StepIncrement">1</property>
                                 <property name="ClimbRate">1</property>
+                                <property name="Digits">2</property>
                                 <property name="Numeric">True</property>
                               </widget>
                               <packing>
@@ -1422,6 +1423,7 @@ M500</property>
                                 <property name="PageIncrement">10</property>
                                 <property name="StepIncrement">1</property>
                                 <property name="ClimbRate">1</property>
+                                <property name="Digits">2</property>
                                 <property name="Numeric">True</property>
                               </widget>
                               <packing>
@@ -1576,7 +1578,7 @@ M500</property>
                               <widget class="Gtk.Label" id="label38">
                                 <property name="MemberName" />
                                 <property name="Xalign">1</property>
-                                <property name="LabelProp" translatable="yes">Арматура (шт):</property>
+                                <property name="LabelProp" translatable="yes">Арматура (м):</property>
                               </widget>
                               <packing>
                                 <property name="TopAttach">4</property>
@@ -1648,6 +1650,7 @@ M500</property>
                                 <property name="PageIncrement">10</property>
                                 <property name="StepIncrement">1</property>
                                 <property name="ClimbRate">1</property>
+                                <property name="Digits">2</property>
                                 <property name="Numeric">True</property>
                               </widget>
                               <packing>

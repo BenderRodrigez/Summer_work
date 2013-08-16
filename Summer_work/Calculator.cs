@@ -33,14 +33,29 @@ namespace Summer_work
 			props[(int)Concrete.M500][1] = 3.9f; props[(int)Concrete.M500][2] = 1.5f;
 		}
 
+		public static float formwork (float h, float l, float w, float d, float add_P)
+		{
+			h += 0.2f;
+			return (2f*(h*l+h*w)+2f*(h*(l-2f*d)+h*(w-2f*d))+add_P*h*2)*0.025f;
+		}
+
 		public static float foundamentVolume (float h, float l, float d, float lJmp, float a)
 		{
 			return h*(l*a - (l-2*d)*(a-2*d)+lJmp*d);
 		}
 
-		public static float armsTotalLenght (float foundametVolum)
+		public static float armsTotalLenght (float P, float h, float d)
 		{
-			return (6*foundametVolum)/5;
+			float K, H = h - 0.05f, R = 2f, T = 0.1f, N = 0.1f, L = 0.1f;
+			if (d <= 0.4)
+				K = 2;
+			else {
+				if(d<=0.8)
+					K= 4;
+				else
+					K = 6;
+			}
+			return P * R * (K + ((K - 1f) * T + 0.05f) / L + ((R - 1f) * H + 0.05f) / N);
 		}
 
 		public static float[] concreteMaterials (float foundamentVolume, Concrete type)

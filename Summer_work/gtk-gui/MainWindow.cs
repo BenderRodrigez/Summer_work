@@ -965,6 +965,7 @@ public partial class MainWindow
 		this.arm.Name = "arm";
 		this.arm.Adjustment.PageIncrement = 10;
 		this.arm.ClimbRate = 1;
+		this.arm.Digits = ((uint)(2));
 		this.arm.Numeric = true;
 		this.table7.Add (this.arm);
 		global::Gtk.Table.TableChild w67 = ((global::Gtk.Table.TableChild)(this.table7 [this.arm]));
@@ -981,6 +982,7 @@ public partial class MainWindow
 		this.beton_vol.Name = "beton_vol";
 		this.beton_vol.Adjustment.PageIncrement = 10;
 		this.beton_vol.ClimbRate = 1;
+		this.beton_vol.Digits = ((uint)(2));
 		this.beton_vol.Numeric = true;
 		this.table7.Add (this.beton_vol);
 		global::Gtk.Table.TableChild w68 = ((global::Gtk.Table.TableChild)(this.table7 [this.beton_vol]));
@@ -1068,7 +1070,7 @@ public partial class MainWindow
 		this.label38 = new global::Gtk.Label ();
 		this.label38.Name = "label38";
 		this.label38.Xalign = 1F;
-		this.label38.LabelProp = global::Mono.Unix.Catalog.GetString ("Арматура (шт):");
+		this.label38.LabelProp = global::Mono.Unix.Catalog.GetString ("Арматура (м):");
 		this.table7.Add (this.label38);
 		global::Gtk.Table.TableChild w75 = ((global::Gtk.Table.TableChild)(this.table7 [this.label38]));
 		w75.TopAttach = ((uint)(4));
@@ -1109,6 +1111,7 @@ public partial class MainWindow
 		this.tube.Name = "tube";
 		this.tube.Adjustment.PageIncrement = 10;
 		this.tube.ClimbRate = 1;
+		this.tube.Digits = ((uint)(2));
 		this.tube.Numeric = true;
 		this.table7.Add (this.tube);
 		global::Gtk.Table.TableChild w78 = ((global::Gtk.Table.TableChild)(this.table7 [this.tube]));
