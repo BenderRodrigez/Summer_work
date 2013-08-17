@@ -56,9 +56,9 @@ namespace Summer_work
 //			                       is_selfdrill, d, lenght, this.accepted_material, this.max_a, this.max_s);
 //		}
 
-		public override bool CanPassByForce (int vector, float force)
+		public override bool CanPassByForce (int vector, float force, float objLenght, Materials wher)
 		{
-			return (this.max_avulsion_force*(vector+1) > force);//+1 - to crrect calcs and make it compact
+			return (force*(objLenght)/(this.lenght-objLenght)*(vector+1) < max_avulsion_force/2) && (force*(objLenght)/(this.lenght-objLenght) > 0);//+1 - to crrect calcs and make it compact
 		}
 
 		public override bool CanByMaterial (Materials what, Materials wher)

@@ -14,7 +14,7 @@ public partial class MainWindow: Gtk.Window
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
-		//Storage.ConvertDB("База.txt");
+		Storage.ConvertDB("База.txt");
 		//Use, to create DB... Don't tuch...
 		Storage.ReadDataResoursesAnchor();
 		Storage.ReadDataResoursesDowels();
@@ -35,7 +35,7 @@ public partial class MainWindow: Gtk.Window
 
 	protected void OnCombobox2Changed (object sender, EventArgs e)
 	{
-		switch (combobox2.ActiveText)
+		switch (roofType.ActiveText)
 		{
 		case "Односкатная": roofImg.Pixbuf = new Gdk.Pixbuf(Storage.GetStreamFromResource("Summer_work.Imgs.Graph.roof1sc.png"));
 			minh.Sensitive = true;
@@ -81,7 +81,7 @@ public partial class MainWindow: Gtk.Window
 	protected void OnButton3Clicked (object sender, EventArgs e)
 	{
 		bool params_OK = true;
-		float pressure = (float)force_spin.Value*9.8f;
+		float pressure = (float)force_spin.Value*9.8f;//P=mg, http://ru.wikipedia.org/wiki/%D0%92%D0%B5%D1%81
 		Materials material = Materials.None;
 		switch (objMaterial.ActiveText) {
 		case "Гипсокартон":
@@ -128,7 +128,7 @@ public partial class MainWindow: Gtk.Window
 			//подбираем
 			Storage.passed.Clear();
 			Calculator.GenerateByMaterialList (material, wall_material);
-			Calculator.GenerateByForce (fix_point, pressure);
+			Calculator.GenerateByForce (fix_point, pressure, lenght, material);
 			Calculator.GenerateByLenght (wall_lenght, lenght);
 			if (Storage.passed.Count < 1) {
 				//Error! Can't fix it by any material:(
@@ -216,6 +216,42 @@ public partial class MainWindow: Gtk.Window
 		arm.Value = Calculator.armsTotalLenght((float)(build_lenght.Value+addit_P.Value+build_weight.Value), (float)(hight.Value + deep.Value), (float)found_flat.Value);//just lenght of "arms"
 		tube.Value = Calculator.formwork((float)(hight.Value + deep.Value), (float)(build_lenght.Value), (float)(build_weight.Value), (float)found_flat.Value, (float)addit_P.Value);
 	}
+
+	protected void OnButton13Clicked (object sender, EventArgs e)
+	{
+		float S = (float)(build_hight.Value*(build_lenght.Value+build_weight.Value)-holesS.Value);
+		int concrete_weight = (int)conWeight.Value;
+		int roof_h = (int)roofHight.Value;
+		int min_roof_h = (int)minh.Value;
+		if(roofType.ActiveText == "Двухскатная")
+			S += (float)(0.5f*roof_h*build_weight.Value);
+		else
+			S += (float)((roof_h - min_roof_h)*min_roof_h + (roof_h - min_roof_h)*build_weight.Value);
+		float w,h,l;
+		switch(materialOfBuild.ActiveText){
+		case "Одинарный кирпич":
+			l = 250f;
+			h = 65f;
+			w = 120f;
+			break;
+		case "Двойной кирпич":
+			l = 250f;
+			h= 88f;
+			w = 120f;
+			break;
+		case "Полуторный кирпич":
+			l = 250f;
+			h = 138f;
+			w = 120f;
+			break;
+		case "Пеноблок":
+			l = 600f;
+			h = 200f;
+			w = 300f;
+			break;
+		}
+	}
+
 
 
 }

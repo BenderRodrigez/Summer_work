@@ -1,3 +1,3 @@
 <ListOfTask>
-  <Task file="" description="Переписать подбор крепежа! Все 3 метода!" priority="High" />
+  <Task file="" description="Переписать подбор крепежа! Все 3 метода!" priority="High" completed="True" />
 </ListOfTask>

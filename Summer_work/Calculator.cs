@@ -166,11 +166,11 @@ namespace Summer_work
 			}
 		}
 
-		public static void GenerateByForce (int vector, float force)
+		public static void GenerateByForce (int vector, float force, float objLenght, Materials wher)
 		{
 			if (Storage.passed.Count < 1) {
 				foreach (Anchor anch in Storage.anchorsDB) {
-					if (anch.CanPassByForce(vector, force))
+					if (anch.CanPassByForce(vector, force, objLenght, wher))
 						{
 						if(Storage.passed.Capacity-1 == Storage.passed.Count)
 							Storage.passed.Capacity*=2;
@@ -178,7 +178,7 @@ namespace Summer_work
 					}
 				}
 				foreach (Dowel dow in Storage.dowelsDB) {
-					if (dow.CanPassByForce(vector, force))
+					if (dow.CanPassByForce(vector, force, objLenght, wher))
 						{
 						if(Storage.passed.Capacity-1 == Storage.passed.Count)
 							Storage.passed.Capacity*=2;
@@ -186,7 +186,7 @@ namespace Summer_work
 					}
 				}
 				foreach (Screw scr in Storage.screwDB) {
-					if (scr.CanPassByForce(vector, force))
+					if (scr.CanPassByForce(vector, force, objLenght, wher))
 						{
 						if(Storage.passed.Capacity-1 == Storage.passed.Count)
 							Storage.passed.Capacity*=2;
@@ -197,7 +197,7 @@ namespace Summer_work
 			else {
 				List<Mount> toDelete = new List<Mount>();
 				foreach(Mount mn in Storage.passed){
-					if(!mn.CanPassByForce(vector, force))
+					if(!mn.CanPassByForce(vector, force, objLenght, wher))
 						toDelete.Add(mn);
 				}
 				foreach(Mount mn in toDelete){

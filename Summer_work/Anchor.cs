@@ -77,15 +77,15 @@ namespace Summer_work
 			}
 		}
 
-		public override bool CanPassByForce (int vector, float force)
+		public override bool CanPassByForce (int vector, float force, float objLenght, Materials wher)
 		{
 			switch (vector) {
 			case -1:
 				return true;
 			case 0:
-				return force < max_cut_force;
+				return force < max_cut_force/2;
 			case 1:
-				return force < max_avulsion_force;
+				return (force*(objLenght)/(this.lenght-objLenght)*(vector+1) < max_avulsion_force/2) && (force*(objLenght)/(this.lenght-objLenght) > 0);
 			}
 
 			return false;
