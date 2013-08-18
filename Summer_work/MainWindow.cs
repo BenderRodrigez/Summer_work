@@ -14,7 +14,7 @@ public partial class MainWindow: Gtk.Window
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
-		Storage.ConvertDB("База.txt");
+		//Storage.ConvertDB("База.txt");
 		//Use, to create DB... Don't tuch...
 		Storage.ReadDataResoursesAnchor();
 		Storage.ReadDataResoursesDowels();
@@ -219,37 +219,64 @@ public partial class MainWindow: Gtk.Window
 
 	protected void OnButton13Clicked (object sender, EventArgs e)
 	{
-		float S = (float)(build_hight.Value*(build_lenght.Value+build_weight.Value)-holesS.Value);
-		int concrete_weight = (int)conWeight.Value;
+		float S = (float)(build_hight.Value * (build_lenght1.Value + build_weight1.Value) - holesS.Value);
+		float concrete_weight = (int)conWeight.Value;
 		int roof_h = (int)roofHight.Value;
 		int min_roof_h = (int)minh.Value;
-		if(roofType.ActiveText == "Двухскатная")
-			S += (float)(0.5f*roof_h*build_weight.Value);
+		if (roofType.ActiveText == "Двухскатная")
+			S += (float)(0.5f * roof_h * build_weight1.Value);
 		else
-			S += (float)((roof_h - min_roof_h)*min_roof_h + (roof_h - min_roof_h)*build_weight.Value);
-		float w,h,l;
-		switch(materialOfBuild.ActiveText){
+			S += (float)((roof_h - min_roof_h) * min_roof_h + (roof_h - min_roof_h) * build_weight.Value);
+		float w = 0, h = 0, l = 0, v = 0;
+		switch (materialOfBuild.ActiveText) {
 		case "Одинарный кирпич":
-			l = 250f;
-			h = 65f;
-			w = 120f;
+			l = 0.250f;
+			h = 0.65f;
+			w = 0.120f;
+			v = 0.00195f;
 			break;
 		case "Двойной кирпич":
-			l = 250f;
-			h= 88f;
-			w = 120f;
+			l = 0.250f;
+			h = 0.138f;
+			w = 0.120f;
+			v = 0.00414f;
 			break;
 		case "Полуторный кирпич":
-			l = 250f;
-			h = 138f;
-			w = 120f;
+			l = 0.250f;
+			h = 0.88f;
+			w = 0.120f;
+			v = 0.00264f;
 			break;
 		case "Пеноблок":
-			l = 600f;
-			h = 200f;
-			w = 300f;
+			l = 0.600f;
+			h = 0.200f;
+			w = 0.300f;
+			v = 0.036f;
 			break;
 		}
+		float totVolume = 0;
+		concrete_weight *= 0.001f;
+		switch (typeOfWalls.ActiveText) {
+		case "0,5 кирпича":
+			totVolume = S*w;
+			break;
+		case "1 кирпич":
+			totVolume = S*l;
+			break;
+		case "1,5 кирпича":
+			totVolume = S*(w+l);
+			break;
+		case "2 кирпича":
+			totVolume = S*2*l;
+			break;
+		case "2,5 кирпича":
+			totVolume = S*2*l+S*w;
+			break;
+		}
+		float conNeeds = totVolume*0.1f;
+		float needs = (totVolume-conNeeds)/v;
+		bricksN.Value = needs;
+		glueN.Value = conNeeds;
 	}
 
 

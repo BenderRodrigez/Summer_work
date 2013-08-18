@@ -1492,12 +1492,13 @@ public partial class MainWindow
 		this.table8.RowSpacing = ((uint)(6));
 		this.table8.ColumnSpacing = ((uint)(6));
 		// Container child table8.Gtk.Table+TableChild
-		this.bricksN = new global::Gtk.SpinButton (0, 100, 1);
+		this.bricksN = new global::Gtk.SpinButton (0, 100000, 1);
 		this.bricksN.Sensitive = false;
 		this.bricksN.CanFocus = true;
 		this.bricksN.Name = "bricksN";
 		this.bricksN.Adjustment.PageIncrement = 10;
 		this.bricksN.ClimbRate = 1;
+		this.bricksN.Digits = ((uint)(1));
 		this.bricksN.Numeric = true;
 		this.table8.Add (this.bricksN);
 		global::Gtk.Table.TableChild w111 = ((global::Gtk.Table.TableChild)(this.table8 [this.bricksN]));
@@ -1505,12 +1506,13 @@ public partial class MainWindow
 		w111.RightAttach = ((uint)(2));
 		w111.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table8.Gtk.Table+TableChild
-		this.glueN = new global::Gtk.SpinButton (0, 100, 1);
+		this.glueN = new global::Gtk.SpinButton (3.46944695195361E-18, 100, 1);
 		this.glueN.Sensitive = false;
 		this.glueN.CanFocus = true;
 		this.glueN.Name = "glueN";
 		this.glueN.Adjustment.PageIncrement = 10;
 		this.glueN.ClimbRate = 1;
+		this.glueN.Digits = ((uint)(3));
 		this.glueN.Numeric = true;
 		this.table8.Add (this.glueN);
 		global::Gtk.Table.TableChild w112 = ((global::Gtk.Table.TableChild)(this.table8 [this.glueN]));
