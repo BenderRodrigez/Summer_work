@@ -9,7 +9,7 @@ using System.Timers;
 public partial class MainWindow: Gtk.Window
 {	
 
-	Timer timer = new Timer (60000);
+	Timer timer = new Timer (1000);
 
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
@@ -22,9 +22,16 @@ public partial class MainWindow: Gtk.Window
 		timer.Elapsed += new ElapsedEventHandler(Tick);
 	}
 
-	public static void Tick (object source, ElapsedEventArgs e)
+	public void Tick (object source, ElapsedEventArgs e)
 	{
 		//here we change picture to dowel or screw, then we fix it in to the wall like one position
+		Mount mnt = Storage.passed [Storage.GetCounter ()];
+		if(mnt.is_doweled)
+			if(mnt.show_dowel)
+				imgFixPreview.Pixbuf = new Gdk.Pixbuf(Storage.GetStreamFromResource(mnt.img_name));
+			else
+				imgFixPreview.Pixbuf = new Gdk.Pixbuf(Storage.GetStreamFromResource((mnt as Screw).dwl.img_name));
+		Storage.passed [Storage.GetCounter ()].show_dowel = !Storage.passed [Storage.GetCounter ()].show_dowel;
 	}
 	
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
@@ -123,7 +130,7 @@ public partial class MainWindow: Gtk.Window
 			break;
 		}
 		float wall_lenght = (float)wallLenght.Value;
-		if ((pressure > 0) && (fix_point > -2 && fix_point < 2) && (lenght > 0) && (fix_pointsN > -1) && (wall_lenght > -1)) {
+		if ((pressure > 0) && (fix_point > -2 && fix_point < 2) && (lenght > 0) && (fix_pointsN > -1) && (wall_lenght > -1) && params_OK) {
 			params_OK |= true;
 			//подбираем
 			Storage.passed.Clear();
@@ -174,6 +181,8 @@ public partial class MainWindow: Gtk.Window
 		spinFixPoints.Value = fixPointsN.Value;
 		if (mnt.is_doweled) {
 			timer.Enabled = true;
+			timer.AutoReset = true;
+			//timer.
 		}
 	}
 
@@ -222,34 +231,34 @@ public partial class MainWindow: Gtk.Window
 		float S = (float)(build_hight.Value * (build_lenght1.Value + build_weight1.Value) - holesS.Value);
 		float concrete_weight = (int)conWeight.Value;
 		int roof_h = (int)roofHight.Value;
-		int min_roof_h = (int)minh.Value;
+		float min_roof_h = (float)minh.Value;
 		if (roofType.ActiveText == "Двухскатная")
 			S += (float)(0.5f * roof_h * build_weight1.Value);
 		else
-			S += (float)((roof_h - min_roof_h) * min_roof_h + (roof_h - min_roof_h) * build_weight.Value);
-		float w = 0, h = 0, l = 0, v = 0;
-		switch (materialOfBuild.ActiveText) {
+			S += (float)(build_weight1.Value* min_roof_h + (roof_h - min_roof_h) * build_weight.Value);
+		float w = 0,/* h = 0,*/ l = 0, v = 0;
+		switch (materialOfBuild.ActiveText) {//Where is we have /r in text oO
 		case "Одинарный кирпич":
 			l = 0.250f;
-			h = 0.65f;
+			//h = 0.65f;
 			w = 0.120f;
 			v = 0.00195f;
 			break;
 		case "Двойной кирпич":
 			l = 0.250f;
-			h = 0.138f;
+			//h = 0.138f;
 			w = 0.120f;
 			v = 0.00414f;
 			break;
 		case "Полуторный кирпич":
 			l = 0.250f;
-			h = 0.88f;
+			//h = 0.88f;
 			w = 0.120f;
 			v = 0.00264f;
 			break;
 		case "Пеноблок":
 			l = 0.600f;
-			h = 0.200f;
+			//h = 0.200f;
 			w = 0.300f;
 			v = 0.036f;
 			break;

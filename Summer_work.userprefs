@@ -1,25 +1,27 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Summer_work/Storage.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Summer_work\MainWindow.cs">
     <Files>
-      <File FileName="Summer_work/Main.cs" Line="17" Column="1" />
-      <File FileName="Summer_work/Warn.cs" Line="19" Column="19" />
-      <File FileName="Summer_work/Mount.cs" Line="25" Column="19" />
-      <File FileName="Summer_work/MainWindow.cs" Line="17" Column="5" />
-      <File FileName="Summer_work/Anchor.cs" Line="80" Column="97" />
-      <File FileName="Summer_work/Dowel.cs" Line="59" Column="97" />
-      <File FileName="Summer_work/Screw.cs" Line="73" Column="97" />
-      <File FileName="Summer_work/Calculator.cs" Line="169" Column="96" />
-      <File FileName="Summer_work/Storage.cs" Line="295" Column="59" />
+      <File FileName="Summer_work\Main.cs" Line="1" Column="1" />
+      <File FileName="Summer_work\Warn.cs" Line="1" Column="1" />
+      <File FileName="Summer_work\Mount.cs" Line="1" Column="1" />
+      <File FileName="Summer_work\MainWindow.cs" Line="225" Column="40" />
+      <File FileName="Summer_work\Anchor.cs" Line="1" Column="1" />
+      <File FileName="Summer_work\Dowel.cs" Line="1" Column="1" />
+      <File FileName="Summer_work\Screw.cs" Line="1" Column="1" />
+      <File FileName="Summer_work\Calculator.cs" Line="1" Column="1" />
+      <File FileName="Summer_work\Storage.cs" Line="295" Column="59" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="C:\Users\1\Desktop\Summer_work\Summer_work\Storage.cs" line="21" />
+      <Breakpoint file="C:\Users\1\Desktop\Summer_work\Summer_work\Storage.cs" line="21" column="1" />
+      <Breakpoint file="C:\Users\Bender\Desktop\Summer_work\Summer_work\MainWindow.cs" line="83" column="1" />
+      <Breakpoint file="C:\Users\Bender\Desktop\Summer_work\Summer_work\MainWindow.cs" line="198" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
-    <Watch file="Summer_work/Storage.cs" line="381" offsetX="566" offsetY="1836" expression="passed" liveUpdate="False" />
-    <Watch file="Summer_work/Anchor.cs" line="92" offsetX="838" offsetY="1547" expression="this.accepted_material" liveUpdate="False" />
+    <Watch file="Summer_work\Storage.cs" line="381" offsetX="566" offsetY="1836" expression="passed" liveUpdate="False" />
+    <Watch file="Summer_work\Anchor.cs" line="92" offsetX="838" offsetY="1547" expression="this.accepted_material" liveUpdate="False" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
 </Properties>

@@ -10,6 +10,7 @@ namespace Summer_work
 		public bool is_selfdrill;
 		public bool is_throughwall;
 		public bool is_doweled = false;
+		public bool show_dowel = false;
 		public float d;
 		public float lenght;
 		public Materials[] accepted_material;

@@ -8,7 +8,7 @@ namespace Summer_work
 		private global::Gtk.Image image1;
 		private global::Gtk.Label showed_message;
 		private global::Gtk.Button buttonOk;
-		
+
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);
@@ -19,11 +19,12 @@ namespace Summer_work
 			this.Title = global::Mono.Unix.Catalog.GetString ("Произошла ошибка!");
 			this.Icon = global::Stetic.IconLoader.LoadIcon (this, "gtk-dialog-warning", global::Gtk.IconSize.Menu);
 			this.TypeHint = ((global::Gdk.WindowTypeHint)(1));
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.WindowPosition = ((global::Gtk.WindowPosition)(3));
 			this.Modal = true;
 			this.Resizable = false;
 			this.DefaultWidth = 400;
 			this.DefaultHeight = 300;
+			this.Gravity = ((global::Gdk.Gravity)(5));
 			// Internal child Summer_work.Warn.VBox
 			global::Gtk.VBox w1 = this.VBox;
 			w1.WidthRequest = 300;

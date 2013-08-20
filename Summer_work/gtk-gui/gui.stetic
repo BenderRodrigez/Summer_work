@@ -2434,11 +2434,12 @@ M500</property>
     <property name="Title" translatable="yes">Произошла ошибка!</property>
     <property name="Icon">stock:gtk-dialog-warning Menu</property>
     <property name="TypeHint">Dialog</property>
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="WindowPosition">CenterAlways</property>
     <property name="Modal">True</property>
     <property name="Resizable">False</property>
     <property name="DefaultWidth">400</property>
     <property name="DefaultHeight">300</property>
+    <property name="Gravity">Center</property>
     <property name="Buttons">1</property>
     <property name="HelpButton">False</property>
     <child internal-child="VBox">

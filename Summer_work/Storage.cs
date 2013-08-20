@@ -17,7 +17,7 @@ namespace Summer_work
 
 		private static int passed_counter = 0;//navigation in passed DB in GUI...
 
-		public int GetCounter ()
+		public static int GetCounter ()
 		{
 			return passed_counter;
 		}
