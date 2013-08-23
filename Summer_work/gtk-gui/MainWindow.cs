@@ -173,7 +173,7 @@ public partial class MainWindow
 		this.notebook1 = new global::Gtk.Notebook ();
 		this.notebook1.CanFocus = true;
 		this.notebook1.Name = "notebook1";
-		this.notebook1.CurrentPage = 2;
+		this.notebook1.CurrentPage = 0;
 		// Container child notebook1.Gtk.Notebook+NotebookChild
 		this.hbox1 = new global::Gtk.HBox ();
 		this.hbox1.Name = "hbox1";
@@ -577,6 +577,7 @@ public partial class MainWindow
 		this.spinAvForce.Name = "spinAvForce";
 		this.spinAvForce.Adjustment.PageIncrement = 10D;
 		this.spinAvForce.ClimbRate = 1D;
+		this.spinAvForce.Digits = ((uint)(2));
 		this.spinAvForce.Numeric = true;
 		this.table6.Add (this.spinAvForce);
 		global::Gtk.Table.TableChild w35 = ((global::Gtk.Table.TableChild)(this.table6 [this.spinAvForce]));
@@ -593,6 +594,7 @@ public partial class MainWindow
 		this.spinD.Name = "spinD";
 		this.spinD.Adjustment.PageIncrement = 10D;
 		this.spinD.ClimbRate = 1D;
+		this.spinD.Digits = ((uint)(1));
 		this.spinD.Numeric = true;
 		this.table6.Add (this.spinD);
 		global::Gtk.Table.TableChild w36 = ((global::Gtk.Table.TableChild)(this.table6 [this.spinD]));
@@ -654,6 +656,7 @@ public partial class MainWindow
 		this.spinMaxCutForce.Name = "spinMaxCutForce";
 		this.spinMaxCutForce.Adjustment.PageIncrement = 10D;
 		this.spinMaxCutForce.ClimbRate = 1D;
+		this.spinMaxCutForce.Digits = ((uint)(2));
 		this.spinMaxCutForce.Numeric = true;
 		this.table6.Add (this.spinMaxCutForce);
 		global::Gtk.Table.TableChild w40 = ((global::Gtk.Table.TableChild)(this.table6 [this.spinMaxCutForce]));

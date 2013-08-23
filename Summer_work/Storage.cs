@@ -42,6 +42,130 @@ namespace Summer_work
 				return passed[passed_counter];
 		}
 
+		public static void ReadAnswers (string filname, out string[] fix_inp, out string[] found_inp, out string[] bricks_inp, out string[] found, out string[] brick)
+		{
+			fix_inp = new string[1];
+			found_inp = new string[1];
+			bricks_inp = new string[1];
+			found = new string[1];
+			brick = new string[1];
+			try{
+				StreamReader reader = new StreamReader(filname);
+				string s;
+				List<string> data = new List<string>(100);
+				bool inputs = true, fixing = false, foundament = false, bricks = false;
+				while((s = reader.ReadLine()) != null)
+				{
+					if(s[0] != '#')
+					{
+						if(inputs)
+						{
+							string[] s1 = s.Split('\\');
+							if(s1.Length == 3)
+							{
+								fix_inp = s1[0].Split(' ');
+								found_inp = s1[1].Split(' ');
+								bricks_inp = s1[2].Split(' ');
+							}
+							else
+								throw new Exception("Inputs range error");
+							//inputs = false;
+							//fixing = true;
+						}
+						if(fixing)
+						{
+							if(passed.Count == passed.Capacity)
+								passed.Capacity *= 2;
+							passed.Add(Mount.FromString(s));
+						}
+						if(foundament)
+						{
+							found = s.Split(' ');
+						}
+						if(bricks)
+						{
+							brick = s.Split(' ');
+						}
+					}
+					else
+					{
+						if(s.IndexOf("Inputs range")>-1)
+						{
+							inputs = true;
+							fixing = false;
+							foundament = false;
+							bricks = false;
+						}
+						if(s.IndexOf("Fixing set")>-1)
+						{
+							fixing = true;
+							inputs = false;
+							foundament = false;
+							bricks = false;
+						}
+						if(s.IndexOf("Foundament set")>-1)
+						{
+							foundament = true;
+							inputs = false;
+							fixing = false;
+							bricks = false;
+						}
+						if(s.IndexOf("Bricks vol set")>-1)
+						{
+							bricks = true;
+							inputs = false;
+							fixing = false;
+							foundament = false;
+						}
+					}
+				}
+			}
+			catch(Exception e){
+				Warn wrn = new Warn ();
+				wrn.SetLabel (e.Message);
+				wrn.Modal = true;
+				wrn.Show ();
+			}
+			/*catch{
+				Warn wrn = new Warn ();
+				wrn.SetLabel ("Ошибка импорта результатов!");
+				wrn.Modal = true;
+				wrn.Show ();
+			}*/
+		}
+
+		public static void WriteAnswers(string filename, string inputDataState, string foundamentSet, string bricksSet)
+		{
+			try
+			{
+				StreamWriter writer = new StreamWriter (filename);
+				writer.WriteLine ("# Here # - is comment.");
+				writer.WriteLine ("# Inputs range: objMaterial planeToFix objLenght fixPointsN wallMaterial wallLenght build_lenght " +
+					"build_hight found_flat addit_P hight deep beton build_lenght1 build_weight1 build_hight materialOfBuild conWeight holesS roofType roofHight minh");
+				writer.WriteLine (inputDataState);
+				writer.WriteLine ("# Fixing set");
+				foreach (Mount mnt in passed)
+					writer.WriteLine (mnt.ToString ());
+				writer.WriteLine ("# Foundament set");
+				writer.WriteLine (foundamentSet);
+				writer.WriteLine ("# Bricks vol set");
+				writer.WriteLine (bricksSet);
+				writer.Close ();
+			}
+			catch(System.IO.FileNotFoundException){
+				Warn wrn = new Warn ();
+				wrn.SetLabel ("Нет такого файла!");
+				wrn.Modal = true;
+				wrn.Show ();
+			}
+			catch(System.IO.IOException){
+				Warn wrn = new Warn ();
+				wrn.SetLabel ("Ошибка ввода-вывода!");
+				wrn.Modal = true;
+				wrn.Show ();
+			}
+		}
+
 		public static void ConvertDB (string filename)
 		{
 			StreamReader reader = new StreamReader (filename);

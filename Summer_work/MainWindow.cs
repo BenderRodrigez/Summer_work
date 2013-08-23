@@ -65,8 +65,100 @@ public partial class MainWindow: Gtk.Window
 
 		if (fc.Run() == (int)ResponseType.Accept) 
 		{
-			//System.IO.FileStream file=System.IO.File.OpenRead(fc.Filename);
-			//file.Close();
+			string[] found_ans;
+			string[] bricks_ans;
+			string[] fixes;
+			string[] found;
+			string[] bricks;
+			Storage.ReadAnswers (fc.Filename, out fixes, out found, out bricks, out found_ans, out bricks_ans);
+			try{
+				float t;
+				int t1;
+				float.TryParse(fixes[0], out t);
+				force_spin.Value = t;
+				int.TryParse (fixes [1], out t1);
+				objMaterial.Active = t1;
+				int.TryParse (fixes [2], out t1);
+				planeToFix.Active = t1;
+				int.TryParse (fixes [3], out t1);
+				objLenght.Value = t1;
+				int.TryParse (fixes [4],out t1);
+				fixPointsN.Value = t1;
+				int.TryParse (fixes [5], out t1);
+				wallMaterial.Active = t1;
+				int.TryParse (fixes [6], out t1);
+				wallLenght.Value = t1;
+
+				int.TryParse (found [0], out t1);
+				build_lenght.Value = t1;
+				int.TryParse (found [1], out t1);
+				build_hight.Value = t1;
+				float.TryParse (found [2], out t);
+				found_flat.Value = t;
+				float.TryParse (found [3], out t);
+				addit_P.Value = t;
+				float.TryParse (found [4], out t);
+				hight.Value = t;
+				float.TryParse (found [5], out t);
+				deep.Value = t;
+				int.TryParse (found [6], out t1);
+				beton.Active = t1;
+				
+				int.TryParse (bricks [0], out t1);
+				build_lenght1.Value = t1;
+				int.TryParse (bricks [1], out t1);
+				build_weight1.Value = t1;
+				int.TryParse (bricks [2], out t1);
+				build_hight.Value = t1;
+				int.TryParse (bricks [3], out t1);
+				materialOfBuild.Active = t1;
+				int.TryParse (bricks [4], out t1);
+				conWeight.Value = t1;
+				int.TryParse (bricks [5], out t1);
+				holesS.Value = t1;
+				int.TryParse (bricks [6], out t1);
+				roofType.Active = t1;
+				int.TryParse (bricks [7], out t1);
+				roofHight.Value = t1;
+				int.TryParse (bricks [8], out t1);
+				minh.Value = t1;
+
+				float.TryParse (found_ans [0], out t);
+				beton_vol.Value = t;
+				float.TryParse (found_ans [1], out t);
+				sand.Value = t;
+				float.TryParse (found_ans [2], out t);
+				concentre.Value = t;
+				float.TryParse (found_ans [3], out t);
+				gravel.Value = t;
+				float.TryParse (found_ans [4], out t);
+				arm.Value = t;
+				float.TryParse (found_ans [5], out t);
+				tube.Value = t;
+
+				float.TryParse (bricks_ans [0], out t);
+				bricksN.Value = t;
+				float.TryParse (bricks_ans [1], out t);
+				glueN.Value = t;
+
+				GtkLabel4.Text = Storage.passed.Count.ToString ();
+				btnForward.Sensitive = true;
+				nameOfCurrentFix.Text += Storage.passed [0].NameToString ();
+				imgFixPreview.Pixbuf = new Gdk.Pixbuf (Storage.GetStreamFromResource (Storage.passed [0].img_name));
+				spinD.Value = Storage.passed [0].d;
+				spinLenght.Value = Storage.passed [0].lenght;
+				spinAvForce.Value = Storage.passed [0].max_avulsion_force;
+				spinMaxCutForce.Value = Storage.passed [0].max_cut_force;
+				spinMaxA.Value = Storage.passed [0].max_a;
+				spinMaxS.Value = Storage.passed [0].max_s;
+				spinFixPoints.Value = fixPointsN.Value;
+			}
+			catch{
+				Warn wrn = new Warn();
+				wrn.SetLabel("Ошибка в структуре файла!");
+				wrn.Modal = true;
+				wrn.Show();
+			}
 		}
 		//Don't forget to call Destroy() or the FileChooserDialog window won't get closed.
 		fc.Destroy();
@@ -79,8 +171,43 @@ public partial class MainWindow: Gtk.Window
 			                      "Отмена", ResponseType.Cancel,
 			                      "Выбрать", ResponseType.Accept);
 		if (fc.Run () == (int)ResponseType.Accept)
-		{
-			//
+		{// TODO:Check it to empty fields
+			string inputs = force_spin.Value.ToString()+' ';
+			inputs += objMaterial.Active.ToString()+' ';
+			inputs += planeToFix.Active.ToString()+' ';
+			inputs += objLenght.Value.ToString ()+' ';
+			inputs += fixPointsN.Value.ToString ()+' ';
+			inputs += wallMaterial.Active.ToString()+' ';
+			inputs += wallLenght.Value.ToString ()+' '+'\\';// \\ - end of part
+
+			inputs += build_lenght.Value.ToString ()+' ';
+			inputs += build_hight.Value.ToString ()+' ';
+			inputs += found_flat.Value.ToString ()+' ';
+			inputs += addit_P.Value.ToString ()+' ';
+			inputs += hight.Value.ToString ()+' ';
+			inputs += deep.Value.ToString ()+' ';
+			inputs += beton.Active.ToString()+' '+'\\';
+
+			inputs += build_lenght1.Value.ToString ()+' ';
+			inputs += build_weight1.Value.ToString ()+' ';
+			inputs += build_hight.Value.ToString ()+' ';
+			inputs += materialOfBuild.Active.ToString()+' ';
+			inputs += conWeight.Value.ToString ()+' ';
+			inputs += holesS.Value.ToString ()+' ';
+			inputs += roofType.Active.ToString()+' ';
+			inputs += roofHight.Value.ToString ()+' ';
+			inputs += minh.Value.ToString ()+' ';
+
+			string foundamet = beton_vol.Value.ToString ()+' ';
+			foundamet += sand.Value.ToString ()+' ';
+			foundamet += concentre.Value.ToString ()+' ';
+			foundamet += gravel.Value.ToString ()+' ';
+			foundamet += arm.Value.ToString ()+' ';
+			foundamet += tube.Value.ToString ()+' ';
+
+			string bricks = bricksN.Value.ToString()+' ';
+			bricks += glueN.Value.ToString ();
+			Storage.WriteAnswers (fc.Filename, inputs, foundamet, bricks);
 		}
 		fc.Destroy();
 	}

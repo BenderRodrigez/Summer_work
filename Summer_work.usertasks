@@ -2,5 +2,5 @@
   <Task file="" description="Переписать подбор крепежа! Все 3 метода!" priority="High" completed="True" />
   <Task file="" description="Подбор крепежа по нагрузкам!!!!" priority="High" />
   <Task file="" description="Доделать ГУИ" />
-  <Task file="" description="Сохранение и восстановление результатов" priority="High" />
+  <Task file="" description="Сохранение и восстановление результатов" priority="High" completed="True" />
 </ListOfTask>
