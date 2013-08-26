@@ -261,7 +261,7 @@ public partial class MainWindow
 		this.label10 = new global::Gtk.Label ();
 		this.label10.Name = "label10";
 		this.label10.Xalign = 1F;
-		this.label10.LabelProp = global::Mono.Unix.Catalog.GetString ("Толщина стены (мм):");
+		this.label10.LabelProp = global::Mono.Unix.Catalog.GetString ("Толщина основы (мм):");
 		this.table2.Add (this.label10);
 		global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.table2 [this.label10]));
 		w8.TopAttach = ((uint)(1));
@@ -274,7 +274,7 @@ public partial class MainWindow
 		this.label11 = new global::Gtk.Label ();
 		this.label11.Name = "label11";
 		this.label11.Xalign = 1F;
-		this.label11.LabelProp = global::Mono.Unix.Catalog.GetString ("Материал стены:");
+		this.label11.LabelProp = global::Mono.Unix.Catalog.GetString ("Материал основы:");
 		this.table2.Add (this.label11);
 		global::Gtk.Table.TableChild w9 = ((global::Gtk.Table.TableChild)(this.table2 [this.label11]));
 		w9.LeftAttach = ((uint)(2));
@@ -352,7 +352,6 @@ public partial class MainWindow
 		w15.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table2.Gtk.Table+TableChild
 		this.objMaterial = global::Gtk.ComboBox.NewText ();
-		this.objMaterial.AppendText (global::Mono.Unix.Catalog.GetString ("Гипсокартон"));
 		this.objMaterial.AppendText (global::Mono.Unix.Catalog.GetString ("Дерево"));
 		this.objMaterial.AppendText (global::Mono.Unix.Catalog.GetString ("Металл"));
 		this.objMaterial.Name = "objMaterial";

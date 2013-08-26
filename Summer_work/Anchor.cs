@@ -71,7 +71,7 @@ namespace Summer_work
 		public override bool CanPassByLenght (float wallLenght, float objLenght)
 		{
 			if (!this.is_throughwall) {
-				return (this.lenght - objLenght < wallLenght) && (this.lenght - objLenght > this.lenght * 0.35);
+				return ((this.lenght - objLenght)*1.3 < wallLenght) && (this.lenght - objLenght > this.lenght * 0.35);
 			} else {
 				return this.lenght -objLenght > wallLenght*1.5;
 			}
@@ -115,7 +115,7 @@ namespace Summer_work
 			case -1:
 				return true;
 			case 0:
-				return (force_r <= R_r_avulsion && force_r <= R_r_cut)/* && (R_r_avulsion*0.2 < force_r && R_r_cut*0.2 < force_r)*/;
+				return (force_r <= R_r_avulsion && force_r <= R_r_cut) && (R_r_avulsion*0.2 < force_r && R_r_cut*0.2 < force_r);
 			case 1:
 				return force_r <= R_r_avulsion;
 			}

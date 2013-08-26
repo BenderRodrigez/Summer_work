@@ -39,7 +39,9 @@ namespace Summer_work
 				return passed [passed_counter];
 			}
 			else
-				return passed[passed_counter];
+				if(passed_counter>-1)
+					return passed[passed_counter];
+			return passed [0];
 		}
 
 		public static void ReadAnswers (string filname, out string[] fix_inp, out string[] found_inp, out string[] bricks_inp, out string[] found, out string[] brick)

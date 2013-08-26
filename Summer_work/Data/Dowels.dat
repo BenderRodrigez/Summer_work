@@ -1,4 +1,5 @@
 #Dowels.Type max_avulsion_force(N) max_cut_force (N) is_throughwall(1,0) is_selfdrill(1,0) d(mm) length(mm) accepted_material(, - separator) max_a(mm) max_s(mm) accepted_screw_d(; - separator)
+Butterfly 1960,2 2500 1 0 10 50 GKL,Tree 75 150 4,2;4,5;5
 Nail 980,2 4250 0 0 10 100 Brick,FoamBlock,Concrete 150 300 7,5;8;8,5
 Nail 980,2 4250 0 0 10 120 Brick,FoamBlock,Concrete 180 360 7,5;8;8,5
 Nail 980,2 4250 0 0 10 140 Brick,FoamBlock,Concrete 210 420 7,5;8;8,5

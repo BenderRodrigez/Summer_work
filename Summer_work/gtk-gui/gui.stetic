@@ -202,7 +202,7 @@
                               <widget class="Gtk.Label" id="label10">
                                 <property name="MemberName" />
                                 <property name="Xalign">1</property>
-                                <property name="LabelProp" translatable="yes">Толщина стены (мм):</property>
+                                <property name="LabelProp" translatable="yes">Толщина основы (мм):</property>
                               </widget>
                               <packing>
                                 <property name="TopAttach">1</property>
@@ -224,7 +224,7 @@
                               <widget class="Gtk.Label" id="label11">
                                 <property name="MemberName" />
                                 <property name="Xalign">1</property>
-                                <property name="LabelProp" translatable="yes">Материал стены:</property>
+                                <property name="LabelProp" translatable="yes">Материал основы:</property>
                               </widget>
                               <packing>
                                 <property name="LeftAttach">2</property>
@@ -370,8 +370,7 @@
                               <widget class="Gtk.ComboBox" id="objMaterial">
                                 <property name="MemberName" />
                                 <property name="IsTextCombo">True</property>
-                                <property name="Items" translatable="yes">Гипсокартон
-Дерево
+                                <property name="Items" translatable="yes">Дерево
 Металл</property>
                               </widget>
                               <packing>

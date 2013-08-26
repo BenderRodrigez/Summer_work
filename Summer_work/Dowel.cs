@@ -107,7 +107,7 @@ namespace Summer_work
 
 		public override bool CanByMaterial (Materials what, Materials wher)
 		{
-			return Array.IndexOf(this.accepted_material, wher)>-1;
+			return Array.IndexOf (this.accepted_material, wher) > -1;
 		}
 
 		public override bool CanPassByLenght (float wallLenght, float objLenght)
@@ -116,9 +116,9 @@ namespace Summer_work
 				if(this.type != DowelType.Nail)
 					return this.lenght < wallLenght;
 				else
-					return (this.lenght - objLenght < wallLenght) && (this.lenght - objLenght > this.lenght * 0.5);
+					return ((this.lenght - objLenght)*1.1 < wallLenght) && (this.lenght - objLenght > this.lenght * 0.5);
 			else
-				return this.lenght -objLenght > wallLenght*1.5;
+				return this.lenght > wallLenght;
 		}
 
 		public override string ToString ()
