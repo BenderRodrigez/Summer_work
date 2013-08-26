@@ -79,13 +79,45 @@ namespace Summer_work
 
 		public override bool CanPassByForce (int vector, float force, float objLenght, Materials wher)
 		{
+			float gamma_F = 1.4f;
+			float gamma_M_avulsion = 1.5f * 1.2f * 1.4f;//2.52
+			float gamma_M_cut = 1f / 0.8f;//5.8*10 (5.8 - class of...)
+			float gamma_F_force = 1.4f;
+			float R_r_cut = ((max_cut_force/4) / gamma_M_cut) / gamma_F;
+			float R_r_avulsion = (max_avulsion_force / gamma_M_avulsion) / gamma_F;
+			float force_r = force * gamma_F_force;
+
+			float S_cont = (float)((this.lenght - objLenght) * Math.PI * this.d)/2.8f;//half of S!!!!
+			float F_cont = force * 1.4f / S_cont;
+			switch (wher) {
+			case Materials.Concrete:
+				if (F_cont > 20)//20 N/mm^2
+					return false;
+				break;
+			case Materials.FoamBlock:
+				if (F_cont > 3)
+					return false;
+				break;
+			case Materials.Brick:
+				if (F_cont > 12.5)
+					return false;
+				break;
+			case Materials.Tree:
+				if (F_cont > 1.8)
+					return false;
+				break;
+			case Materials.GKL:
+				if (F_cont > 2.1)
+					return false;
+				break;
+			}
 			switch (vector) {
 			case -1:
 				return true;
 			case 0:
-				return force < max_cut_force/2;
+				return (force_r <= R_r_avulsion && force_r <= R_r_cut)/* && (R_r_avulsion*0.2 < force_r && R_r_cut*0.2 < force_r)*/;
 			case 1:
-				return (force*(objLenght)/(this.lenght-objLenght)*(vector+1) < max_avulsion_force/2) && (force*(objLenght)/(this.lenght-objLenght) > 0);
+				return force_r <= R_r_avulsion;
 			}
 
 			return false;

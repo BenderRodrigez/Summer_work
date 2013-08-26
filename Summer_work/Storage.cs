@@ -197,7 +197,7 @@ namespace Summer_work
 					srs1 = srs [srs.Length - 1].Split ('х');
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
-					max_cut_force = (float)(400f*Math.PI*Math.Pow(d/2, 2));//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
+					max_cut_force = (float)(300f*Math.PI*Math.Pow((d-1)/2, 2)/2);//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
 					max_avulsion_force = (0.07f*max_cut_force)/0.13f;
 					is_selfdrill = false;
 					is_throughwall = false;
@@ -211,7 +211,7 @@ namespace Summer_work
 					srs1 = srs [srs.Length - 1].Split ('х');
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
-					max_cut_force = (float)(400f*Math.PI*Math.Pow(d/2, 2));//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
+					max_cut_force = (float)(300f*Math.PI*Math.Pow((d-1)/2, 2)/2);//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
 					max_avulsion_force = (0.07f*max_cut_force)/0.13f;
 					is_selfdrill = false;
 					is_throughwall = false;
@@ -225,7 +225,7 @@ namespace Summer_work
 					srs1 = srs [srs.Length - 1].Split ('х');
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
-					max_cut_force = (float)(400f*Math.PI*Math.Pow(d/2, 2));//in KGS, http://rostfrei.ru/edelstahl.nsf/pages/grade
+					max_cut_force = (float)(300f*Math.PI*Math.Pow((d-1)/2, 2)/2);//in KGS, http://rostfrei.ru/edelstahl.nsf/pages/grade
 					max_avulsion_force = (0.07f*max_cut_force)/0.13f;
 					is_selfdrill = false;
 					is_throughwall = false;
@@ -242,7 +242,7 @@ namespace Summer_work
 					srs1 = srs [srs.Length - 1].Split ('х');
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
-					max_cut_force = (float)(400f*Math.PI*Math.Pow(d/2, 2));//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
+					max_cut_force = (float)(300f*Math.PI*Math.Pow((d-1)/2, 2)/2);//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
 					max_avulsion_force = (0.07f*max_cut_force)/0.13f;
 					is_selfdrill = false;
 					is_throughwall = false;
@@ -275,8 +275,8 @@ namespace Summer_work
 					srs1 = srs [srs.Length - 2].Split ('х');
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
-					max_cut_force = (float)(400f*Math.PI*Math.Pow((d-1.5)/2, 2));//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
-					max_avulsion_force = (float)((0.07f*300f*Math.PI*Math.Pow(d/2, 2))/0.13f);
+					max_cut_force = (float)(300f*Math.PI*Math.Pow((d-1.5)/2, 2)/2);//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
+					max_avulsion_force = (float)((0.07f*4f*Math.PI*Math.Pow(d/2, 2))/0.13f);
 					is_selfdrill = false;
 					is_throughwall = false;
 					max_a = lenght * (float)1.5;
@@ -294,7 +294,7 @@ namespace Summer_work
 					srs1 = srs [srs.Length - 1].Split ('х');
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
-					max_cut_force = (float)(300f*Math.PI*Math.Pow(d/2, 2));//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
+					max_cut_force = (float)(300f*Math.PI*Math.Pow((d-1)/2, 2)/2);//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
 					max_avulsion_force = (0.07f*max_cut_force)/0.13f;
 					is_selfdrill = false;
 					is_throughwall = false;
@@ -313,7 +313,7 @@ namespace Summer_work
 					srs1 = srs [srs.Length - 1].Split ('х');
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
-					max_cut_force = (float)(400f*Math.PI*Math.Pow(d/2, 2));//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
+					max_cut_force = (float)(300f*Math.PI*Math.Pow((d-1)/2, 2)/2);//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
 					max_avulsion_force = (0.07f*max_cut_force)/0.13f;
 					is_selfdrill = false;
 					is_throughwall = false;
@@ -327,7 +327,7 @@ namespace Summer_work
 					srs1 = srs [srs.Length - 2].Split ('х');
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
-					max_cut_force = (float)(400f*Math.PI*Math.Pow(d/2, 2));//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
+					max_cut_force = (float)(300f*Math.PI*Math.Pow((d-1)/2, 2)/2);//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
 					max_avulsion_force = (0.07f*max_cut_force)/0.13f;
 					is_selfdrill = false;
 					is_throughwall = false;
@@ -341,7 +341,7 @@ namespace Summer_work
 					srs1 = srs [srs.Length - 2].Split ('х');
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
-					max_cut_force = (float)(400f*Math.PI*Math.Pow(d/2, 2));//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
+					max_cut_force = (float)(300f*Math.PI*Math.Pow((d-1)/2, 2)/2);//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
 					max_avulsion_force = (0.07f*max_cut_force)/0.13f;
 					is_selfdrill = false;
 					is_throughwall = false;
@@ -358,7 +358,7 @@ namespace Summer_work
 						srs1 = srs [srs.Length - 3].Split ('х');
 						d = float.Parse (srs1 [0]);
 						lenght = float.Parse (srs1 [1]);
-						max_cut_force = (float)(400f*Math.PI*Math.Pow(d/2, 2));//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
+						max_cut_force = (float)(300f*Math.PI*Math.Pow((d-1)/2, 2)/2);//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
 						max_avulsion_force = (0.07f*max_cut_force)/0.13f;
 						is_selfdrill = false;
 						is_throughwall = false;
@@ -372,7 +372,7 @@ namespace Summer_work
 						srs1 = srs [srs.Length - 3].Split ('х');
 						d = float.Parse (srs1 [0]);
 						lenght = float.Parse (srs1 [1]);
-						max_cut_force = (float)(400f*Math.PI*Math.Pow(d/2, 2));//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
+						max_cut_force = (float)(300f*Math.PI*Math.Pow((d-1)/2, 2)/2);//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
 						max_avulsion_force = (0.07f*max_cut_force)/0.13f;
 						is_selfdrill = true;
 						is_throughwall = false;
@@ -388,7 +388,7 @@ namespace Summer_work
 					srs1 = srs [srs.Length - 1].Split ('х');
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
-					max_cut_force = (float)(400f*Math.PI*Math.Pow(d/2, 2));//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
+					max_cut_force = (float)(300f*Math.PI*Math.Pow((d-1)/2, 2)/2);//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
 					max_avulsion_force = (0.07f*max_cut_force)/0.13f;
 					is_selfdrill = false;
 					is_throughwall = false;
@@ -402,7 +402,7 @@ namespace Summer_work
 					srs1 = srs [srs.Length - 1].Split ('х');
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
-					max_cut_force = (float)(400f*Math.PI*Math.Pow(d/2, 2));//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
+					max_cut_force = (float)(300f*Math.PI*Math.Pow((d-1)/2, 2)/2);//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
 					max_avulsion_force = (0.07f*max_cut_force)/0.13f;
 					is_selfdrill = true;
 					is_throughwall = false;
@@ -416,7 +416,7 @@ namespace Summer_work
 					srs1 = srs [srs.Length - 1].Split ('х');
 					d = float.Parse (srs1 [0]);
 					lenght = float.Parse (srs1 [1]);
-					max_cut_force = (float)(400f*Math.PI*Math.Pow(d/2, 2));//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
+					max_cut_force = (float)(300f*Math.PI*Math.Pow((d-1)/2, 2)/2);//in Newtons, http://rostfrei.ru/edelstahl.nsf/pages/grade
 					max_avulsion_force = (0.07f*max_cut_force)/0.13f;
 					is_selfdrill = false;
 					is_throughwall = false;

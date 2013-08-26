@@ -77,7 +77,7 @@ namespace Summer_work
 			foreach(Dowel dwl in Storage.dowelsDB)
 			{
 				if(dwl.type != DowelType.Nail){
-					if((scr.lenght < (dwl.lenght/0.8)) && (scr.lenght > (dwl.lenght*0.5))){
+					if((scr.lenght < (dwl.lenght/0.8)) && (scr.lenght > (dwl.lenght*0.8))){
 						if(scr.d >= dwl.accepted_screw_d[0] && scr.d <= dwl.accepted_screw_d[dwl.accepted_screw_d.Length-1])
 							return dwl;
 					}

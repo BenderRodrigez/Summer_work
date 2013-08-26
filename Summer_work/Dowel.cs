@@ -56,9 +56,53 @@ namespace Summer_work
 //			                       is_selfdrill, d, lenght, this.accepted_material, this.max_a, this.max_s);
 //		}
 
-		public override bool CanPassByForce (int vector, float force, float objLenght, Materials wher)
+		public override bool CanPassByForce (int vector, float force, float objLenght, Materials what)
 		{
-			return (force*(objLenght)/(this.lenght-objLenght)*(vector+1) < max_avulsion_force/2) && (force*(objLenght)/(this.lenght-objLenght) > 0);//+1 - to crrect calcs and make it compact
+			float gamma_F = 1.4f;
+			float gamma_M_avulsion = 1.5f * 1.2f * 1.4f;//2.52
+			float gamma_M_cut = 1f / 0.8f;//5.8*10 (5.8 - class of...)
+			float gamma_F_force = 1.4f;
+			float R_r_cut = ((max_cut_force/7) / gamma_M_cut) / gamma_F;
+			float R_r_avulsion = (max_avulsion_force / gamma_M_avulsion) / gamma_F;
+			float force_r = force * gamma_F_force;
+
+			float S_cont;
+			if(this.type == DowelType.Nail)
+				S_cont = (float)((this.lenght - objLenght) * Math.PI * this.d)/2.8f;//half of S!!!!
+			else
+				S_cont = (float)((this.lenght) * Math.PI * this.d)/2.8f;//half of S!!!!
+			float F_cont = force * 1.4f / S_cont;
+			switch (what) {
+				case Materials.Concrete:
+				if (F_cont > 20)//20 N/mm^2
+					return false;
+				break;
+				case Materials.FoamBlock:
+				if (F_cont > 3)
+					return false;
+				break;
+				case Materials.Brick:
+				if (F_cont > 12.5)
+					return false;
+				break;
+				case Materials.Tree:
+				if (F_cont > 40)
+					return false;
+				break;
+				case Materials.GKL:
+				if (F_cont > 2.1)
+					return false;
+				break;
+			}
+			switch (vector) {
+			case -1:
+				return true;
+			case 0:
+				return force_r <= R_r_avulsion && force_r <= R_r_cut;
+			case 1:
+				return force_r <= R_r_avulsion;
+			}
+			return false;
 		}
 
 		public override bool CanByMaterial (Materials what, Materials wher)

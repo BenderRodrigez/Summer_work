@@ -243,7 +243,7 @@ public partial class MainWindow
 		w6.XOptions = ((global::Gtk.AttachOptions)(4));
 		w6.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table2.Gtk.Table+TableChild
-		this.force_spin = new global::Gtk.SpinButton (0.5D, 100D, 0.5D);
+		this.force_spin = new global::Gtk.SpinButton (0.5D, 1000D, 0.5D);
 		this.force_spin.CanFocus = true;
 		this.force_spin.Name = "force_spin";
 		this.force_spin.Adjustment.PageIncrement = 10D;
@@ -1570,7 +1570,7 @@ public partial class MainWindow
 			this.Child.ShowAll ();
 		}
 		this.DefaultWidth = 1245;
-		this.DefaultHeight = 629;
+		this.DefaultHeight = 641;
 		this.Show ();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
 		this.openAction1.Activated += new global::System.EventHandler (this.OnOpenAction1Activated);

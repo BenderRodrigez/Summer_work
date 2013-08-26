@@ -231,7 +231,7 @@ public partial class MainWindow: Gtk.Window
 			params_OK &= false;
 			break;
 		}
-		int fix_point = objMaterial.Active - 1;
+		int fix_point = objMaterial.Active - 2;
 		float lenght = (float)objLenght.Value;
 		int fix_pointsN = (int)fixPointsN.Value;
 		pressure /= fix_pointsN;
@@ -262,8 +262,8 @@ public partial class MainWindow: Gtk.Window
 			//подбираем
 			Storage.passed.Clear();
 			Calculator.GenerateByMaterialList (material, wall_material);
-			Calculator.GenerateByForce (fix_point, pressure, lenght, material);
 			Calculator.GenerateByLenght (wall_lenght, lenght);
+			Calculator.GenerateByForce (fix_point, pressure, lenght, wall_material);
 			if (Storage.passed.Count < 1) {
 				//Error! Can't fix it by any material:(
 				Warn wrn = new Warn ();
